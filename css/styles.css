@@ -1,0 +1,317 @@
+/* ========================================== */
+/* FolioFlow - Custom Styles                 */
+/* ========================================== */
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 210 9% 9%;
+        --foreground: 210 40% 98%;
+
+        --card: 210 6% 14%;
+        --card-foreground: 210 40% 98%;
+
+        --popover: 210 6% 14%;
+        --popover-foreground: 210 40% 98%;
+
+        --primary: 210 40% 98%;
+        --primary-foreground: 222.2 47.4% 11.2%;
+
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 212.7 26.8% 83.9%;
+    }
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    scroll-behavior: smooth;
+    @apply bg-background text-foreground transition-colors duration-300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.2);
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.4);
+}
+
+/* Glow Effects */
+.glow-icon {
+    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.5));
+}
+
+.glow-card:hover {
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.15);
+}
+
+/* Editor Transition */
+.editor-enter-active {
+    transition: opacity 0.5s ease;
+}
+
+.editor-enter-from {
+    opacity: 0;
+}
+
+/* Input Styles */
+.modern-input {
+    transition: all 0.2s;
+    border: 1px solid hsl(var(--input));
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+}
+
+.modern-input:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    outline: none;
+}
+
+/* Gradient Animation for Text */
+@keyframes gradient {
+
+    0%,
+    100% {
+        background-size: 200% 200%;
+        background-position: left center;
+    }
+
+    50% {
+        background-size: 200% 200%;
+        background-position: right center;
+    }
+}
+
+.animate-gradient {
+    animation: gradient 4s ease infinite;
+    background-size: 200% 200%;
+}
+
+/* Fluid Typography */
+h1 {
+    font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
+}
+
+h3 {
+    font-size: clamp(1.125rem, 2vw + 0.25rem, 1.5rem);
+}
+
+p {
+    font-size: clamp(0.875rem, 1vw + 0.5rem, 1.125rem);
+}
+
+/* Aurora Animation */
+@keyframes aurora {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+
+    50% {
+        background-position: 100% 50%;
+        opacity: 1;
+    }
+
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.5;
+    }
+}
+
+.animate-aurora {
+    background-size: 200% 200%;
+    animation: aurora 10s ease infinite;
+}
+
+/* Micro-interactions */
+button:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+/* Toast Animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Enhanced Shadow */
+.shadow-3xl {
+    box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth hover lift */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+}
+
+/* ========================================== */
+/* Neon Glow Effects for Icons                */
+/* Only the icon glows, not the background    */
+/* ========================================== */
+.glow-blue {
+    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.7)) drop-shadow(0 0 12px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+}
+
+.glow-purple {
+    filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.7)) drop-shadow(0 0 12px rgba(168, 85, 247, 0.5)) drop-shadow(0 0 20px rgba(168, 85, 247, 0.3));
+}
+
+.glow-emerald {
+    filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.7)) drop-shadow(0 0 12px rgba(16, 185, 129, 0.5)) drop-shadow(0 0 20px rgba(16, 185, 129, 0.3));
+}
+
+.glow-rose {
+    filter: drop-shadow(0 0 6px rgba(244, 63, 94, 0.7)) drop-shadow(0 0 12px rgba(244, 63, 94, 0.5)) drop-shadow(0 0 20px rgba(244, 63, 94, 0.3));
+}
+
+.glow-amber {
+    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.7)) drop-shadow(0 0 12px rgba(245, 158, 11, 0.5)) drop-shadow(0 0 20px rgba(245, 158, 11, 0.3));
+}
+
+.glow-sky {
+    filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.7)) drop-shadow(0 0 12px rgba(14, 165, 233, 0.5)) drop-shadow(0 0 20px rgba(14, 165, 233, 0.3));
+}
+
+.glow-violet {
+    filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.7)) drop-shadow(0 0 12px rgba(139, 92, 246, 0.5)) drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));
+}
+
+.glow-brand {
+    filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.7)) drop-shadow(0 0 12px rgba(139, 92, 246, 0.5)) drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));
+}
+
+/* ========================================== */
+/* Shimmer Effect for Editor Button           */
+/* Clean, elegant sweep animation             */
+/* ========================================== */
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.shimmer-btn {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #7c3aed 100%);
+    background-size: 100% 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shimmer-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.3) 50%,
+            transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2.5s ease-in-out infinite;
+}
+
+.shimmer-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.shimmer-btn:hover::before {
+    animation-duration: 1.5s;
+}

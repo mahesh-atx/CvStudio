@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FolioFlow | CV to Portfolio</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script src="js/tailwind.config.js"></script>
+
+    <!-- PDF.js Library for PDF Text Extraction -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Configure PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script>
+        // Check for saved theme preference or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-background text-foreground antialiased overflow-x-hidden transition-colors duration-300">
+
+    <!-- ========================================== -->
+    <!-- 🏠 LANDING PAGE MODE                       -->
+    <!-- ========================================== -->
+    <div id="landing-page" class="transition-opacity duration-700 ease-in-out">
+
+        <!-- Navigation -->
+        <nav class="fixed w-full z-50 bg-background/70 backdrop-blur-xl border-b border-border/50 shadow-sm">
+            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-brand-500/30">
+                        F
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-foreground">FolioFlow</span>
+                </div>
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+                    <a href="#how-it-works" class="hover:text-brand-600 transition-colors">How it Works</a>
+                    <a href="#features" class="hover:text-brand-600 transition-colors">Features</a>
+                    <a href="#" class="hover:text-brand-600 transition-colors">Pricing</a>
+                    <a href="#" class="hover:text-brand-600 transition-colors">GitHub</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleTheme()"
+                        class="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+                        <i class="fa-solid fa-sun hidden dark:inline"></i>
+                        <i class="fa-solid fa-moon inline dark:hidden"></i>
+                    </button>
+                    <button class="text-sm font-medium text-muted-foreground hover:text-brand-600">Log In</button>
+                    <button
+                        class="px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl">Get
+                        Started</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section - Full Screen -->
+        <header class="min-h-screen flex flex-col justify-center px-6 max-w-7xl mx-auto relative">
+            <!-- Enhanced Decorative Elements (Parallax) -->
+            <div id="parallax-blob-1"
+                class="absolute top-32 left-0 w-96 h-96 bg-gradient-to-br from-purple-300 to-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse transition-transform duration-100">
+            </div>
+            <div id="parallax-blob-2"
+                class="absolute top-40 right-0 w-96 h-96 bg-gradient-to-br from-blue-300 to-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse transition-transform duration-100"
+                style="animation-delay: 2s"></div>
+            <div id="parallax-blob-3"
+                class="absolute bottom-40 left-1/3 w-72 h-72 bg-gradient-to-br from-indigo-200 to-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse transition-transform duration-100"
+                style="animation-delay: 4s"></div>
+
+            <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+                <!-- LEFT: Text Content -->
+                <div class="flex-1 text-center lg:text-left animate-fade-in-up">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 border border-brand-100 dark:bg-brand-900/20 dark:border-brand-500/20 text-brand-600 dark:text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        AI-Powered Portfolio Builder
+                    </div>
+
+                    <h1
+                        class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold font-heading tracking-tight text-foreground mb-6 leading-[1.1]">
+                        Turn Your CV Into a <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-purple-500 to-indigo-500 animate-gradient">Beautiful
+                            Portfolio</span>
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed">
+                        Upload your CV PDF and instantly generate a stunning, hosted portfolio website. No coding
+                        required. Stand out to recruiters in seconds.
+                    </p>
+
+                    <!-- Enhanced Trust Badges -->
+                    <div
+                        class="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-muted-foreground text-sm">
+                        <div
+                            class="flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-sm border border-border">
+                            <i class="fa-solid fa-shield-halved text-green-500 glow-emerald"></i>
+                            <span>Secure Upload</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-sm border border-border">
+                            <i class="fa-solid fa-bolt text-amber-500 glow-amber"></i>
+                            <span>Instant Results</span>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-sm border border-border">
+                            <i class="fa-solid fa-heart text-rose-500 glow-rose"></i>
+                            <span>Free to Use</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Upload Box (Light Theme) -->
+                <div class="w-full lg:w-[480px] flex-shrink-0 animate-fade-in-up" style="animation-delay: 0.3s">
+                    <div
+                        class="bg-card rounded-3xl p-6 shadow-2xl shadow-slate-200/60 dark:shadow-none border border-border hover:shadow-3xl transition-shadow duration-500">
+                        <!-- Dashed Border Container -->
+                        <div
+                            class="border-2 border-dashed border-border rounded-2xl p-5 hover:border-brand-300 transition-colors">
+                            <!-- Inner Upload Area -->
+                            <div id="drop-zone"
+                                class="bg-gradient-to-b from-muted/30 to-card rounded-xl p-10 flex flex-col items-center justify-center cursor-pointer hover:from-brand-50/50 hover:to-card transition-all group relative">
+                                <input type="file" id="cv-upload"
+                                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept=".pdf" />
+
+                                <div id="upload-initial-state"
+                                    class="flex flex-col items-center transition-all duration-300">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-br from-muted to-muted/80 rounded-full flex items-center justify-center mb-6 group-hover:from-brand-100 group-hover:to-brand-200 transition-all shadow-inner">
+                                        <i
+                                            class="fa-solid fa-arrow-up-from-bracket text-2xl text-muted-foreground group-hover:text-brand-600 transition-colors glow-brand"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-foreground mb-2">Drop your resume here</h3>
+                                    <p class="text-sm text-muted-foreground">Supported File Types: PDF</p>
+                                </div>
+
+                                <!-- Step-by-Step Loading State -->
+                                <div id="upload-loading-state" class="hidden flex flex-col items-center w-full">
+                                    <div class="flex flex-col gap-3 w-full max-w-xs">
+                                        <!-- Step 1: Reading PDF -->
+                                        <div id="progress-step-1" class="progress-step flex items-center gap-3">
+                                            <div
+                                                class="step-indicator w-7 h-7 rounded-full border-2 border-brand-500 flex items-center justify-center bg-brand-50 dark:bg-brand-900/30">
+                                                <i class="fa-solid fa-spinner fa-spin text-xs text-brand-500"></i>
+                                            </div>
+                                            <span class="text-sm font-medium text-foreground">Reading PDF file...</span>
+                                        </div>
+                                        <!-- Step 2: Extracting Text -->
+                                        <div id="progress-step-2"
+                                            class="progress-step flex items-center gap-3 opacity-40">
+                                            <div
+                                                class="step-indicator w-7 h-7 rounded-full border-2 border-muted flex items-center justify-center">
+                                                <span class="text-xs text-muted-foreground font-medium">2</span>
+                                            </div>
+                                            <span class="text-sm text-muted-foreground">Extracting content...</span>
+                                        </div>
+                                        <!-- Step 3: AI Analysis -->
+                                        <div id="progress-step-3"
+                                            class="progress-step flex items-center gap-3 opacity-40">
+                                            <div
+                                                class="step-indicator w-7 h-7 rounded-full border-2 border-muted flex items-center justify-center">
+                                                <span class="text-xs text-muted-foreground font-medium">3</span>
+                                            </div>
+                                            <span class="text-sm text-muted-foreground">AI analyzing resume...</span>
+                                        </div>
+                                        <!-- Step 4: Building Portfolio -->
+                                        <div id="progress-step-4"
+                                            class="progress-step flex items-center gap-3 opacity-40">
+                                            <div
+                                                class="step-indicator w-7 h-7 rounded-full border-2 border-muted flex items-center justify-center">
+                                                <span class="text-xs text-muted-foreground font-medium">4</span>
+                                            </div>
+                                            <span class="text-sm text-muted-foreground">Building portfolio...</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-foreground mt-6" id="progress-title">Reading
+                                        your CV...</h3>
+                                    <p class="text-sm text-muted-foreground mt-1" id="progress-subtitle">This usually
+                                        takes 5-10 seconds</p>
+                                </div>
+
+                                <div id="upload-success-state" class="hidden flex flex-col items-center">
+                                    <div
+                                        class="w-16 h-16 bg-gradient-to-br from-green-50 to-green-100 rounded-full flex items-center justify-center mb-5 shadow-inner">
+                                        <i class="fa-solid fa-check text-2xl text-green-600"></i>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-foreground" id="filename-display">resume.pdf
+                                    </h3>
+                                    <p class="text-sm text-green-600 mt-2 font-medium">Ready to build!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Create Button -->
+                        <button id="create-btn" disabled
+                            class="w-full mt-5 bg-secondary text-secondary-foreground font-semibold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:cursor-not-allowed text-base disabled:text-muted-foreground disabled:bg-muted">
+                            Create My Portfolio Now
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                        <!-- Alternative Option -->
+                        <div class="text-center mt-6">
+                            <p class="text-sm text-muted-foreground mb-2">Don't have a resume? No problem!</p>
+                            <a href="#" id="manual-create-link"
+                                class="inline-flex items-center gap-1.5 text-sm text-brand-600 hover:text-brand-700 transition-colors font-medium hover:underline underline-offset-2">
+                                Create portfolio manually instead
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div
+                class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce hidden md:flex flex-col items-center gap-2 text-slate-400">
+                <span class="text-xs uppercase tracking-wider">Scroll to explore</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </header>
+
+        <!-- ========================================== -->
+        <!-- SECTION 1: How It Works                   -->
+        <!-- ========================================== -->
+        <section id="how-it-works" class="py-24 bg-white dark:bg-background">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">Simple
+                        Process</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">How It Works</h2>
+                    <p class="text-muted-foreground text-lg max-w-2xl mx-auto">Transform your CV into a stunning
+                        portfolio in
+                        just three simple steps</p>
+                </div>
+
+                <!-- Steps Grid -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-blue-200 dark:hover:border-blue-700/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/40 dark:to-blue-800/20 flex items-center justify-center mb-5 text-blue-500 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-cloud-arrow-up glow-blue"></i>
+                        </div>
+                        <div
+                            class="inline-flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">
+                            <span
+                                class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">1</span>
+                            Step One
+                        </div>
+                        <h3 class="text-lg font-bold text-foreground mb-2">Upload Your CV</h3>
+                        <p class="text-muted-foreground leading-relaxed text-sm">Simply drag and drop your existing PDF
+                            resume.
+                            Our
+                            AI-powered engine handles all the parsing and extraction automatically.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-purple-200 dark:hover:border-purple-700/50 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 dark:from-purple-900/40 dark:to-purple-800/20 flex items-center justify-center mb-5 text-purple-500 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-wand-magic-sparkles glow-purple"></i>
+                        </div>
+                        <div
+                            class="inline-flex items-center gap-2 text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-2">
+                            <span
+                                class="w-5 h-5 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center">2</span>
+                            Step Two
+                        </div>
+                        <h3 class="text-lg font-bold text-foreground mb-2">Customize & Preview</h3>
+                        <p class="text-muted-foreground leading-relaxed text-sm">Choose from beautiful templates,
+                            customize
+                            colors and
+                            fonts, and see real-time preview of your portfolio as you edit.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-emerald-200 dark:hover:border-emerald-700/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 flex items-center justify-center mb-5 text-emerald-500 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-rocket glow-emerald"></i>
+                        </div>
+                        <div
+                            class="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">
+                            <span
+                                class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">3</span>
+                            Step Three
+                        </div>
+                        <h3 class="text-lg font-bold text-foreground mb-2">Publish & Share</h3>
+                        <p class="text-muted-foreground leading-relaxed text-sm">Get a custom hosted link, export to
+                            GitHub
+                            Pages, or
+                            download the complete HTML/CSS package for self-hosting.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 2: Why Have a Portfolio           -->
+        <!-- ========================================== -->
+        <section id="why-portfolio"
+            class="py-24 bg-gradient-to-b from-muted to-background dark:from-background dark:to-background">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-xs font-semibold uppercase tracking-wider mb-4">Stand
+                        Out</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Have a Portfolio?</h2>
+                    <p class="text-muted-foreground text-lg max-w-2xl mx-auto">A portfolio website is your 24/7 personal
+                        brand
+                        ambassador that works while you sleep</p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-rose-200 dark:hover:border-rose-700/50 hover:shadow-xl hover:shadow-rose-500/10 transition-all duration-300">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/40 dark:to-rose-800/20 flex items-center justify-center mb-4 text-rose-500 text-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-user-tie glow-rose"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">First Impressions</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">Make a lasting impression on recruiters
+                            before
+                            they even meet you. Your portfolio speaks volumes about your professionalism.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-amber-200 dark:hover:border-amber-700/50 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/40 dark:to-amber-800/20 flex items-center justify-center mb-4 text-amber-500 text-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-eye glow-amber"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">Showcase Your Work</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">Display your projects, achievements,
+                            and
+                            skills in an interactive way that a traditional resume simply cannot match.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-sky-200 dark:hover:border-sky-700/50 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 dark:from-sky-900/40 dark:to-sky-800/20 flex items-center justify-center mb-4 text-sky-500 text-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-magnifying-glass glow-sky"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">Be Discoverable</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">Improve your online presence and let
+                            opportunities find you. Your portfolio is searchable and shareable across the web.</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-violet-200 dark:hover:border-violet-700/50 hover:shadow-xl hover:shadow-violet-500/10 transition-all duration-300">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-100 to-violet-50 dark:from-violet-900/40 dark:to-violet-800/20 flex items-center justify-center mb-4 text-violet-500 text-lg group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-trophy glow-violet"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">Beat Competition</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">Stand out from hundreds of applicants.
+                            A
+                            professional portfolio is your competitive edge in today's job market.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 3: What You Get                   -->
+        <!-- ========================================== -->
+        <section id="what-you-get" class="py-24 bg-white dark:bg-background">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">Features</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-foreground mb-4">What You Get</h2>
+                    <p class="text-muted-foreground text-lg max-w-2xl mx-auto">Everything you need to create a
+                        professional
+                        online presence, absolutely free</p>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Feature 1 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-rose-200 dark:hover:border-rose-700/50 hover:shadow-xl hover:shadow-rose-500/10 transition-all duration-300">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/40 dark:to-rose-800/20 flex items-center justify-center mb-4 text-rose-500 text-base group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-palette glow-rose"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">Beautiful Templates</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">Multiple professionally designed
+                            templates to
+                            match your personal brand and industry.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-sky-200 dark:hover:border-sky-700/50 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 dark:from-sky-900/40 dark:to-sky-800/20 flex items-center justify-center mb-4 text-sky-500 text-base group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-mobile-screen glow-sky"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">Mobile Responsive</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">Your portfolio looks stunning on any
+                            device -
+                            desktop, tablet, or smartphone.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-emerald-200 dark:hover:border-emerald-700/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 flex items-center justify-center mb-4 text-emerald-500 text-base group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chart-line glow-emerald"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">SEO Optimized</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">Built-in SEO best practices help
+                            recruiters
+                            and clients find you through search engines.</p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-brand-200 dark:hover:border-brand-700/50 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-100 to-brand-50 dark:from-brand-900/40 dark:to-brand-800/20 flex items-center justify-center mb-4 text-brand-500 text-base group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-github glow-brand"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">GitHub Export</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">One-click export to GitHub Pages for
+                            free
+                            hosting with your own custom subdomain.</p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-blue-200 dark:hover:border-blue-700/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/40 dark:to-blue-800/20 flex items-center justify-center mb-4 text-blue-500 text-base group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-download glow-blue"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">Download & Own</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">Download your complete portfolio as
+                            HTML/CSS
+                            files. You own your code, forever.</p>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div
+                        class="group bg-card rounded-2xl p-5 border border-border hover:border-amber-200 dark:hover:border-amber-700/50 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/40 dark:to-amber-800/20 flex items-center justify-center mb-4 text-amber-500 text-base group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-bolt glow-amber"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-foreground mb-1">Lightning Fast</h3>
+                        <p class="text-muted-foreground text-xs leading-relaxed">Optimized for speed and performance.
+                            Your
+                            portfolio loads instantly for the best user experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer
+            class="bg-slate-900 text-white dark:bg-background dark:text-foreground dark:border-t dark:border-border py-16">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                            F
+                        </div>
+                        <span class="font-bold text-xl">FolioFlow</span>
+                    </div>
+                    <div class="text-slate-400 text-sm text-center md:text-left">
+                        © 2025 FolioFlow. Made with <i class="fa-solid fa-heart text-rose-500 mx-1 glow-rose"></i> to
+                        help
+                        professionals grow.
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 dark:bg-card flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition-all">
+                            <i class="fa-brands fa-twitter glow-sky"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 dark:bg-card flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition-all">
+                            <i class="fa-brands fa-github glow-brand"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 dark:bg-card flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition-all">
+                            <i class="fa-brands fa-linkedin glow-blue"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 👁️ PORTFOLIO PREVIEW MODE                   -->
+    <!-- ========================================== -->
+    <div id="preview-mode"
+        class="fixed inset-0 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 hidden flex flex-col z-50">
+
+        <!-- Preview Header Bar -->
+        <header
+            class="bg-card/80 backdrop-blur-xl h-16 border-b border-border flex items-center justify-between px-6 shrink-0 z-20 shadow-sm">
+            <!-- Left: Back & Editor Buttons -->
+            <div class="flex items-center gap-3">
+                <button id="preview-back-btn"
+                    class="flex items-center gap-2 px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-all text-sm font-medium">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span class="hidden sm:inline">Back</span>
+                </button>
+                <button id="preview-editor-btn"
+                    class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white shadow-md shimmer-btn">
+                    <i class="fa-solid fa-pen-to-square relative z-10"></i>
+                    <span class="relative z-10">Editor</span>
+                </button>
+            </div>
+
+            <!-- Center: Logo/Title -->
+            <div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg">
+                    F
+                </div>
+                <span class="font-bold text-lg text-foreground hidden sm:inline">Portfolio Preview</span>
+            </div>
+
+            <!-- Right: Publish & Download Buttons -->
+            <div class="flex items-center gap-3">
+                <button id="preview-download-btn"
+                    class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium bg-card border border-border hover:bg-muted transition-all shadow-sm">
+                    <i class="fa-solid fa-download"></i>
+                    <span class="hidden sm:inline">Download</span>
+                </button>
+                <button id="preview-publish-btn"
+                    class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-brand-600 text-white shadow-lg shadow-brand-500/30 hover:bg-brand-700 transition-all">
+                    <i class="fa-solid fa-globe"></i>
+                    <span class="hidden sm:inline">Publish</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Large Portfolio Preview Container -->
+        <main class="flex-1 flex items-center justify-center p-4 md:p-8 overflow-hidden">
+            <div class="w-full h-full max-w-6xl max-h-[90vh] flex flex-col relative animate-fade-in-up">
+                <!-- Browser Chrome Frame -->
+                <div
+                    class="bg-slate-200 dark:bg-slate-700 rounded-t-2xl px-4 py-3 flex items-center gap-3 shrink-0 border-b border-slate-300 dark:border-slate-600 shadow-sm">
+                    <!-- Traffic Lights -->
+                    <div class="flex items-center gap-2">
+                        <div
+                            class="w-3.5 h-3.5 rounded-full bg-red-500 hover:bg-red-600 transition cursor-pointer shadow-inner">
+                        </div>
+                        <div
+                            class="w-3.5 h-3.5 rounded-full bg-yellow-500 hover:bg-yellow-600 transition cursor-pointer shadow-inner">
+                        </div>
+                        <div
+                            class="w-3.5 h-3.5 rounded-full bg-green-500 hover:bg-green-600 transition cursor-pointer shadow-inner">
+                        </div>
+                    </div>
+                    <!-- URL Bar -->
+                    <div
+                        class="flex-1 bg-white dark:bg-slate-800 rounded-lg px-4 py-2 flex items-center justify-center border border-slate-300 dark:border-slate-600 shadow-inner mx-4">
+                        <i class="fa-solid fa-lock text-green-600 text-xs mr-2"></i>
+                        <span class="text-sm text-slate-500 dark:text-slate-400 font-mono"
+                            id="preview-url">yourname.folioflow.co</span>
+                    </div>
+                    <!-- Refresh Button -->
+                    <button
+                        class="w-8 h-8 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-600 transition border border-slate-300 dark:border-slate-600">
+                        <i class="fa-solid fa-arrows-rotate text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Portfolio Content Container -->
+                <div id="preview-mode-container"
+                    class="flex-1 bg-white overflow-y-auto overflow-x-hidden scroll-smooth rounded-b-2xl shadow-2xl shadow-slate-400/30 dark:shadow-slate-900/50">
+                    <!-- Content Injected via JS -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 🖥️ PORTFOLIO EDITOR MODE                    -->
+    <!-- ========================================== -->
+    <div id="editor-app" class="fixed inset-0 bg-secondary hidden flex flex-col z-50">
+
+        <!-- Editor Header -->
+        <header class="bg-card h-16 border-b border-border flex items-center justify-between px-6 shrink-0 z-20">
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold">
+                    F</div>
+                <div class="hidden md:block">
+                    <h1 class="font-bold text-foreground text-sm">Portfolio Editor</h1>
+                    <span class="text-xs text-green-500 flex items-center gap-1"><span
+                            class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Saved locally</span>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex bg-muted rounded-lg p-1">
+                    <button id="desktop-view-btn"
+                        class="px-3 py-1.5 rounded-md text-xs font-medium bg-card shadow-sm text-foreground">Desktop</button>
+                    <button id="mobile-view-btn"
+                        class="px-3 py-1.5 rounded-md text-xs font-medium text-muted-foreground hover:text-foreground">Mobile</button>
+                </div>
+                <!-- Undo/Redo Buttons -->
+                <div class="flex items-center gap-1">
+                    <button id="undo-btn" onclick="undo()" disabled
+                        class="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition disabled:opacity-30 disabled:cursor-not-allowed"
+                        title="Undo (Ctrl+Z)">
+                        <i class="fa-solid fa-rotate-left text-sm"></i>
+                    </button>
+                    <button id="redo-btn" onclick="redo()" disabled
+                        class="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition disabled:opacity-30 disabled:cursor-not-allowed"
+                        title="Redo (Ctrl+Y)">
+                        <i class="fa-solid fa-rotate-right text-sm"></i>
+                    </button>
+                </div>
+                <div class="h-6 w-px bg-border mx-2"></div>
+                <button class="text-muted-foreground hover:text-brand-600 px-3 py-2 text-sm font-medium"><i
+                        class="fa-brands fa-github mr-2"></i>Link GitHub</button>
+                <button onclick="downloadSite()"
+                    class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition shadow-lg shadow-slate-900/20 flex items-center gap-2">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> Export
+                </button>
+                <button onclick="alert('Published to https://alex-dev.folioflow.co')"
+                    class="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-700 transition shadow-lg shadow-brand-500/30 flex items-center gap-2">
+                    <i class="fa-solid fa-globe"></i> Publish
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="flex-1 flex overflow-hidden relative">
+
+            <!-- Mobile Sidebar Toggle Button -->
+            <button id="mobile-sidebar-toggle"
+                class="md:hidden fixed bottom-6 left-6 z-[60] w-14 h-14 bg-brand-600 text-white rounded-full shadow-lg shadow-brand-500/30 flex items-center justify-center hover:bg-brand-700 transition-all active:scale-95">
+                <i class="fa-solid fa-sliders text-lg"></i>
+            </button>
+
+            <!-- Mobile Sidebar Overlay -->
+            <div id="mobile-sidebar-overlay" class="hidden md:hidden fixed inset-0 bg-black/50 z-[55]"></div>
+
+            <!-- LEFT: Sidebar with Icon Nav + Content Panels -->
+            <aside id="editor-sidebar"
+                class="fixed md:relative right-0 top-0 bottom-0 w-[85%] max-w-[380px] md:w-[420px] md:max-w-none flex flex-shrink-0 h-full z-[56] md:z-auto transform translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+
+                <!-- Mini Icon Sidebar -->
+                <div
+                    class="w-14 bg-slate-900 flex flex-col items-center py-4 gap-1 border-r border-slate-800 flex-shrink-0">
+                    <button onclick="switchSection('personal')" id="nav-personal"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-white bg-brand-600 transition-all"
+                        title="Personal Info">
+                        <i class="fa-solid fa-user text-sm"></i>
+                    </button>
+                    <button onclick="switchSection('skills')" id="nav-skills"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                        title="Skills">
+                        <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+                    </button>
+                    <button onclick="switchSection('experience')" id="nav-experience"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                        title="Experience">
+                        <i class="fa-solid fa-briefcase text-sm"></i>
+                    </button>
+                    <button onclick="switchSection('education')" id="nav-education"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                        title="Education">
+                        <i class="fa-solid fa-graduation-cap text-sm"></i>
+                    </button>
+                    <button onclick="switchSection('projects')" id="nav-projects"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                        title="Projects">
+                        <i class="fa-solid fa-folder-open text-sm"></i>
+                    </button>
+                    <button onclick="switchSection('contact')" id="nav-contact"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                        title="Contact">
+                        <i class="fa-solid fa-envelope text-sm"></i>
+                    </button>
+                    <button onclick="switchSection('certifications')" id="nav-certifications"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                        title="Certifications">
+                        <i class="fa-solid fa-certificate text-sm"></i>
+                    </button>
+                    <button onclick="switchSection('languages')" id="nav-languages"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                        title="Languages">
+                        <i class="fa-solid fa-language text-sm"></i>
+                    </button>
+                    <button onclick="switchSection('awards')" id="nav-awards"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                        title="Awards & Achievements">
+                        <i class="fa-solid fa-trophy text-sm"></i>
+                    </button>
+                    <div class="flex-1"></div>
+                    <button onclick="switchSection('settings')" id="nav-settings"
+                        class="section-nav-btn w-10 h-10 rounded-xl flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
+                        title="Settings">
+                        <i class="fa-solid fa-gear text-sm"></i>
+                    </button>
+                </div>
+
+                <!-- Content Panels -->
+                <div class="flex-1 bg-slate-950 overflow-y-auto">
+                    <form id="portfolio-form" oninput="updatePreview(); debouncedSaveToHistory();">
+
+                        <!-- Personal Info Section -->
+                        <div id="section-personal" class="section-panel p-5">
+                            <h2 class="text-white font-semibold mb-5 flex items-center gap-2">
+                                <i class="fa-solid fa-user text-brand-500"></i> Personal Info
+                            </h2>
+                            <div class="space-y-4">
+                                <!-- Photo Upload -->
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-2">Profile Photo</label>
+                                    <div class="flex items-center gap-3">
+                                        <div id="photo-preview"
+                                            class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center overflow-hidden border-2 border-dashed border-slate-700">
+                                            <i class="fa-solid fa-user text-slate-500"></i>
+                                        </div>
+                                        <label
+                                            class="cursor-pointer px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-sm font-medium text-white transition">
+                                            <i class="fa-solid fa-camera mr-2"></i>Upload
+                                            <input type="file" id="photo-upload" accept="image/*" class="hidden">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">Full Name</label>
+                                    <input type="text" name="fullName"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">Professional
+                                        Title</label>
+                                    <input type="text" name="title"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">Location</label>
+                                    <input type="text" name="location"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition"
+                                        placeholder="City, Country">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">Short Summary</label>
+                                    <textarea name="bio" rows="4"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition resize-none"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills Section -->
+                        <div id="section-skills" class="section-panel hidden p-5">
+                            <h2 class="text-white font-semibold mb-5 flex items-center gap-2">
+                                <i class="fa-solid fa-wand-magic-sparkles text-brand-500"></i> Skills
+                            </h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">Skills (comma
+                                        separated)</label>
+                                    <textarea name="skills" rows="4"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition resize-none"
+                                        placeholder="React, Node.js, Python, UI/UX Design..."></textarea>
+                                </div>
+                                <p class="text-xs text-slate-500">Tip: Add skills separated by commas. They will appear
+                                    as tags in your portfolio.</p>
+                            </div>
+                        </div>
+
+                        <!-- Experience Section -->
+                        <div id="section-experience" class="section-panel hidden p-5">
+                            <div class="flex items-center justify-between mb-5">
+                                <h2 class="text-white font-semibold flex items-center gap-2">
+                                    <i class="fa-solid fa-briefcase text-brand-500"></i> Experience
+                                </h2>
+                                <button type="button" onclick="addExperience()"
+                                    class="text-xs text-brand-400 font-medium hover:text-brand-300 flex items-center gap-1">
+                                    <i class="fa-solid fa-plus"></i> Add
+                                </button>
+                            </div>
+                            <div id="experience-list" class="space-y-3">
+                                <!-- Experience items will be rendered dynamically -->
+                            </div>
+                            <div class="mt-4 p-4 border-2 border-dashed border-slate-700 rounded-lg text-center">
+                                <p class="text-slate-500 text-sm">Click "+ Add" to add your work experience</p>
+                            </div>
+                        </div>
+
+                        <!-- Education Section -->
+                        <div id="section-education" class="section-panel hidden p-5">
+                            <div class="flex items-center justify-between mb-5">
+                                <h2 class="text-white font-semibold flex items-center gap-2">
+                                    <i class="fa-solid fa-graduation-cap text-brand-500"></i> Education
+                                </h2>
+                                <button type="button" onclick="addEducation()"
+                                    class="text-xs text-brand-400 font-medium hover:text-brand-300 flex items-center gap-1">
+                                    <i class="fa-solid fa-plus"></i> Add
+                                </button>
+                            </div>
+                            <div id="education-list" class="space-y-3">
+                                <!-- Education items will be rendered dynamically -->
+                            </div>
+                            <div class="mt-4 p-4 border-2 border-dashed border-slate-700 rounded-lg text-center">
+                                <p class="text-slate-500 text-sm">Click "+ Add" to add your education</p>
+                            </div>
+                        </div>
+
+                        <!-- Projects Section -->
+                        <div id="section-projects" class="section-panel hidden p-5">
+                            <div class="flex items-center justify-between mb-5">
+                                <h2 class="text-white font-semibold flex items-center gap-2">
+                                    <i class="fa-solid fa-folder-open text-brand-500"></i> Projects
+                                </h2>
+                                <button type="button" onclick="addProject()"
+                                    class="text-xs text-brand-400 font-medium hover:text-brand-300 flex items-center gap-1">
+                                    <i class="fa-solid fa-plus"></i> Add
+                                </button>
+                            </div>
+                            <div id="projects-list" class="space-y-3">
+                                <!-- Project items will be rendered dynamically -->
+                            </div>
+                            <div class="mt-4 p-4 border-2 border-dashed border-slate-700 rounded-lg text-center">
+                                <p class="text-slate-500 text-sm">Click "+ Add" to add your projects</p>
+                            </div>
+                        </div>
+
+                        <!-- Contact Section -->
+                        <div id="section-contact" class="section-panel hidden p-5">
+                            <h2 class="text-white font-semibold mb-5 flex items-center gap-2">
+                                <i class="fa-solid fa-envelope text-brand-500"></i> Contact Info
+                            </h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">Email Address</label>
+                                    <input type="email" name="email"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition"
+                                        placeholder="your@email.com">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">Phone Number</label>
+                                    <input type="tel" name="phone"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition"
+                                        placeholder="+1 234 567 8900">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">LinkedIn URL</label>
+                                    <input type="url" name="linkedin"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition"
+                                        placeholder="https://linkedin.com/in/...">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">GitHub URL</label>
+                                    <input type="url" name="github"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition"
+                                        placeholder="https://github.com/...">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-1">Website URL</label>
+                                    <input type="url" name="website"
+                                        class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none transition"
+                                        placeholder="https://yourwebsite.com">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certifications Section -->
+                        <div id="section-certifications" class="section-panel hidden p-5">
+                            <div class="flex items-center justify-between mb-5">
+                                <h2 class="text-white font-semibold flex items-center gap-2">
+                                    <i class="fa-solid fa-certificate text-brand-500"></i> Certifications
+                                </h2>
+                                <button type="button" onclick="addCertification()"
+                                    class="text-xs text-brand-400 font-medium hover:text-brand-300 flex items-center gap-1">
+                                    <i class="fa-solid fa-plus"></i> Add
+                                </button>
+                            </div>
+                            <div id="certifications-list" class="space-y-3">
+                                <!-- Certification items will be rendered dynamically -->
+                            </div>
+                            <div class="mt-4 p-4 border-2 border-dashed border-slate-700 rounded-lg text-center">
+                                <p class="text-slate-500 text-sm">Click "+ Add" to add your certifications</p>
+                            </div>
+                        </div>
+
+                        <!-- Languages Section -->
+                        <div id="section-languages" class="section-panel hidden p-5">
+                            <div class="flex items-center justify-between mb-5">
+                                <h2 class="text-white font-semibold flex items-center gap-2">
+                                    <i class="fa-solid fa-language text-brand-500"></i> Languages
+                                </h2>
+                                <button type="button" onclick="addLanguage()"
+                                    class="text-xs text-brand-400 font-medium hover:text-brand-300 flex items-center gap-1">
+                                    <i class="fa-solid fa-plus"></i> Add
+                                </button>
+                            </div>
+                            <div id="languages-list" class="space-y-3">
+                                <!-- Language items will be rendered dynamically -->
+                            </div>
+                            <div class="mt-4 p-4 border-2 border-dashed border-slate-700 rounded-lg text-center">
+                                <p class="text-slate-500 text-sm">Click "+ Add" to add languages you speak</p>
+                            </div>
+                        </div>
+
+                        <!-- Awards Section -->
+                        <div id="section-awards" class="section-panel hidden p-5">
+                            <div class="flex items-center justify-between mb-5">
+                                <h2 class="text-white font-semibold flex items-center gap-2">
+                                    <i class="fa-solid fa-trophy text-brand-500"></i> Awards & Achievements
+                                </h2>
+                                <button type="button" onclick="addAward()"
+                                    class="text-xs text-brand-400 font-medium hover:text-brand-300 flex items-center gap-1">
+                                    <i class="fa-solid fa-plus"></i> Add
+                                </button>
+                            </div>
+                            <div id="awards-list" class="space-y-3">
+                                <!-- Award items will be rendered dynamically -->
+                            </div>
+                            <div class="mt-4 p-4 border-2 border-dashed border-slate-700 rounded-lg text-center">
+                                <p class="text-slate-500 text-sm">Click "+ Add" to add your awards and achievements</p>
+                            </div>
+                        </div>
+
+                        <!-- Settings Section (Theme & Colors) -->
+                        <div id="section-settings" class="section-panel hidden p-5">
+                            <h2 class="text-white font-semibold mb-5 flex items-center gap-2">
+                                <i class="fa-solid fa-gear text-brand-500"></i> Design Settings
+                            </h2>
+                            <div class="space-y-6">
+                                <!-- Template Selection -->
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-3">Template Style</label>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <button type="button" onclick="setTemplate('modern')"
+                                            class="template-btn p-3 rounded-lg border-2 border-brand-500 bg-brand-500/20 text-brand-300 text-xs font-bold text-center transition">
+                                            Modern
+                                        </button>
+                                        <button type="button" onclick="setTemplate('minimal')"
+                                            class="template-btn p-3 rounded-lg border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white text-xs font-bold text-center transition">
+                                            Minimal
+                                        </button>
+                                        <button type="button" onclick="setTemplate('bold')"
+                                            class="template-btn p-3 rounded-lg border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white text-xs font-bold text-center transition">
+                                            Bold
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Accent Color -->
+                                <div>
+                                    <label class="block text-xs font-medium text-slate-400 mb-3">Accent Color</label>
+                                    <div class="flex gap-3">
+                                        <button type="button" onclick="setAccent('violet')"
+                                            class="w-10 h-10 rounded-full bg-violet-500 ring-2 ring-offset-2 ring-offset-slate-950 ring-violet-500 transition hover:scale-110"></button>
+                                        <button type="button" onclick="setAccent('blue')"
+                                            class="w-10 h-10 rounded-full bg-blue-500 hover:ring-2 ring-offset-2 ring-offset-slate-950 ring-blue-500 transition hover:scale-110"></button>
+                                        <button type="button" onclick="setAccent('emerald')"
+                                            class="w-10 h-10 rounded-full bg-emerald-500 hover:ring-2 ring-offset-2 ring-offset-slate-950 ring-emerald-500 transition hover:scale-110"></button>
+                                        <button type="button" onclick="setAccent('rose')"
+                                            class="w-10 h-10 rounded-full bg-rose-500 hover:ring-2 ring-offset-2 ring-offset-slate-950 ring-rose-500 transition hover:scale-110"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hidden fields for backward compatibility -->
+                        <input type="hidden" name="expRole">
+                        <input type="hidden" name="expCompany">
+                        <input type="hidden" name="expDesc">
+                    </form>
+                </div>
+            </aside>
+
+            <!-- RIGHT: Live Preview -->
+            <section
+                class="flex-1 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center p-4 md:p-8 overflow-hidden relative">
+                <!-- Preview Canvas with Browser Frame -->
+                <div id="preview-wrapper"
+                    class="w-full h-full max-w-5xl flex flex-col relative animate-fade-in-up transition-all duration-300">
+                    <!-- Browser Chrome Frame -->
+                    <div
+                        class="bg-slate-200 dark:bg-slate-700 rounded-t-xl px-4 py-3 flex items-center gap-3 shrink-0 border-b border-slate-300 dark:border-slate-600">
+                        <!-- Traffic Lights -->
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition cursor-pointer">
+                            </div>
+                            <div
+                                class="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 transition cursor-pointer">
+                            </div>
+                            <div class="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition cursor-pointer">
+                            </div>
+                        </div>
+                        <!-- URL Bar -->
+                        <div
+                            class="flex-1 bg-white dark:bg-slate-800 rounded-md px-4 py-1.5 flex items-center justify-center border border-slate-300 dark:border-slate-600 shadow-inner">
+                            <i class="fa-solid fa-lock text-green-600 text-[10px] mr-2"></i>
+                            <span
+                                class="text-xs text-slate-500 dark:text-slate-400 font-mono">yourname.folioflow.co</span>
+                        </div>
+                        <!-- Placeholder for balance -->
+                        <div class="w-16"></div>
+                    </div>
+
+                    <!-- Portfolio Content Container -->
+                    <div id="preview-container"
+                        class="flex-1 bg-white overflow-y-auto overflow-x-hidden scroll-smooth rounded-b-xl shadow-2xl">
+                        <!-- Content Injected via JS -->
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Configuration -->
+    <script src="js/config.js"></script>
+    <!-- Date Parsing Utilities -->
+    <script src="js/dateUtils.js"></script>
+    <!-- Resume Parser Module -->
+    <script src="js/parser.js"></script>
+    <!-- Application JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>
