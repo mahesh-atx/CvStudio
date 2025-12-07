@@ -6,6 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CvStudio | CV to Portfolio</title>
 
+    <!-- Meta Description & SEO -->
+    <meta name="description"
+        content="Transform your CV into a stunning portfolio website in seconds. Upload your resume PDF and let AI create a beautiful, hosted portfolio. Free, fast, and no coding required.">
+    <meta name="keywords"
+        content="portfolio builder, CV to portfolio, resume website, AI portfolio generator, free portfolio maker">
+    <meta name="author" content="Mahesh Dongare">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="CvStudio - Turn Your CV Into a Beautiful Portfolio">
+    <meta property="og:description"
+        content="Upload your resume and instantly generate a stunning portfolio website. No coding required.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cvstudio.co">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CvStudio - CV to Portfolio Builder">
+    <meta name="twitter:description" content="Transform your CV into a stunning portfolio website in seconds.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <meta name="theme-color" content="#1f2937">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -134,7 +158,7 @@
         </script>
 
         <!-- Hero Section - Full Screen -->
-        <header class="min-h-screen flex flex-col justify-center px-6 max-w-7xl mx-auto relative pt-20">
+        <header class="min-h-[100dvh] flex flex-col justify-center px-4 sm:px-6 max-w-7xl mx-auto relative pt-20 pb-8">
             <!-- Enhanced Decorative Elements (Parallax) -->
             <div id="parallax-blob-1"
                 class="absolute top-32 left-0 w-96 h-96 bg-gradient-to-br from-purple-300 to-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse transition-transform duration-100">
@@ -146,60 +170,62 @@
                 class="absolute bottom-40 left-1/3 w-72 h-72 bg-gradient-to-br from-indigo-200 to-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse transition-transform duration-100"
                 style="animation-delay: 4s"></div>
 
-            <div class="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8 lg:gap-20">
 
                 <!-- LEFT: Text Content -->
                 <div class="flex-1 text-center lg:text-left animate-fade-in-up">
                     <div
-                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 border border-brand-100 dark:bg-brand-900/20 dark:border-brand-500/20 text-brand-600 dark:text-brand-400 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-100 dark:bg-brand-900/20 dark:border-brand-500/20 text-brand-600 dark:text-brand-400 text-xs font-semibold uppercase tracking-wider mb-4 shadow-sm">
                         <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
                         AI-Powered Portfolio Builder
                     </div>
 
                     <h1
-                        class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold font-heading tracking-tight text-foreground mb-6 leading-[1.1]">
-                        Turn Your CV Into a <br>
+                        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold font-heading tracking-tight text-foreground mb-4 leading-[1.1]">
+                        Turn Your CV Into a
                         <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-purple-500 to-indigo-500 animate-gradient">Beautiful
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-purple-500 to-indigo-500 animate-gradient">
+                            Beautiful
                             Portfolio</span>
                     </h1>
 
-                    <p class="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed">
-                        Upload your CV PDF and instantly generate a stunning, hosted portfolio website. No coding
-                        required. Stand out to recruiters in seconds.
+                    <p
+                        class="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 max-w-xl leading-relaxed mx-auto lg:mx-0">
+                        Upload your resume and instantly generate a stunning portfolio website. No coding required.
                     </p>
 
-                    <!-- Enhanced Trust Badges -->
+                    <!-- Trust Badges - Compact on mobile, full on desktop -->
                     <div
-                        class="flex flex-wrap items-center justify-center lg:justify-start gap-6 text-muted-foreground text-sm">
+                        class="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-4 text-muted-foreground text-xs sm:text-sm">
                         <div
-                            class="flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-sm border border-border">
-                            <i class="fa-solid fa-shield-halved text-green-500 glow-emerald"></i>
-                            <span>Secure Upload</span>
+                            class="flex items-center gap-1.5 sm:gap-2 bg-card px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm border border-border">
+                            <i class="fa-solid fa-shield-halved text-green-500"></i>
+                            <span>Secure</span>
                         </div>
                         <div
-                            class="flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-sm border border-border">
-                            <i class="fa-solid fa-bolt text-amber-500 glow-amber"></i>
-                            <span>Instant Results</span>
+                            class="flex items-center gap-1.5 sm:gap-2 bg-card px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm border border-border">
+                            <i class="fa-solid fa-bolt text-amber-500"></i>
+                            <span>Instant</span>
                         </div>
                         <div
-                            class="flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-sm border border-border">
-                            <i class="fa-solid fa-heart text-rose-500 glow-rose"></i>
-                            <span>Free to Use</span>
+                            class="flex items-center gap-1.5 sm:gap-2 bg-card px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm border border-border">
+                            <i class="fa-solid fa-heart text-rose-500"></i>
+                            <span>Free</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- RIGHT: Upload Box -->
-                <div class="w-full lg:w-[480px] flex-shrink-0 animate-fade-in-up" style="animation-delay: 0.3s">
+                <div class="w-full max-w-md lg:w-[480px] lg:max-w-none flex-shrink-0 animate-fade-in-up"
+                    style="animation-delay: 0.3s">
                     <div
-                        class="bg-card rounded-3xl p-6 shadow-2xl shadow-slate-200/60 dark:shadow-none border border-border hover:shadow-3xl transition-shadow duration-500">
+                        class="bg-card rounded-2xl p-4 sm:p-6 shadow-2xl shadow-slate-200/60 dark:shadow-none border border-border">
                         <!-- Dashed Border Container -->
                         <div
-                            class="border-2 border-dashed border-border rounded-2xl p-5 hover:border-brand-300 transition-colors">
+                            class="border-2 border-dashed border-border rounded-xl p-3 sm:p-5 hover:border-brand-300 transition-colors">
                             <!-- Inner Upload Area -->
                             <div id="drop-zone"
-                                class="bg-gradient-to-b from-muted/30 to-card rounded-xl p-10 flex flex-col items-center justify-center cursor-pointer hover:from-brand-50/50 hover:to-card transition-all group relative">
+                                class="bg-gradient-to-b from-muted/30 to-card rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center cursor-pointer hover:from-brand-50/50 hover:to-card transition-all group relative">
                                 <input type="file" id="cv-upload"
                                     class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
                                     accept=".pdf" />
@@ -207,12 +233,13 @@
                                 <div id="upload-initial-state"
                                     class="flex flex-col items-center transition-all duration-300">
                                     <div
-                                        class="w-16 h-16 bg-gradient-to-br from-muted to-muted/80 rounded-full flex items-center justify-center mb-6 group-hover:from-brand-100 group-hover:to-brand-200 transition-all shadow-inner">
+                                        class="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-muted to-muted/80 rounded-full flex items-center justify-center mb-4 group-hover:from-brand-100 group-hover:to-brand-200 transition-all shadow-inner">
                                         <i
-                                            class="fa-solid fa-arrow-up-from-bracket text-2xl text-muted-foreground group-hover:text-brand-600 transition-colors glow-brand"></i>
+                                            class="fa-solid fa-arrow-up-from-bracket text-xl sm:text-2xl text-muted-foreground group-hover:text-brand-600 transition-colors"></i>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-foreground mb-2">Drop your resume here</h3>
-                                    <p class="text-sm text-muted-foreground">Supported File Types: PDF</p>
+                                    <h3 class="text-base sm:text-lg font-semibold text-foreground mb-1">Drop your resume
+                                        here</h3>
+                                    <p class="text-xs sm:text-sm text-muted-foreground">Supported: PDF</p>
                                 </div>
 
                                 <!-- Step-by-Step Loading State -->
@@ -283,7 +310,7 @@
                         <div class="text-center mt-6">
                             <p class="text-sm text-muted-foreground mb-2">Don't have a resume? No problem!</p>
                             <a href="#" id="manual-create-link"
-                                class="inline-flex items-center gap-1.5 text-sm text-brand-600 hover:text-brand-700 transition-colors font-medium hover:underline underline-offset-2">
+                                class="inline-flex items-center gap-1.5 text-sm text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 transition-colors font-medium hover:underline underline-offset-2">
                                 Create portfolio manually instead
                                 <i class="fa-solid fa-arrow-right text-xs"></i>
                             </a>
@@ -321,19 +348,20 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Step 1 -->
                     <div
-                        class="group bg-card rounded-2xl p-6 border border-border hover:border-blue-200 dark:hover:border-blue-700/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-8 border border-border hover:border-blue-200 dark:hover:border-blue-700/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300">
                         <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/40 dark:to-blue-800/20 flex items-center justify-center mb-5 text-blue-500 text-xl group-hover:scale-110 transition-transform">
+                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/40 dark:to-blue-800/20 flex items-center justify-center mb-6 text-blue-500 text-2xl group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-cloud-arrow-up glow-blue"></i>
                         </div>
                         <div
-                            class="inline-flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-2">
+                            class="inline-flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider mb-3">
                             <span
-                                class="w-5 h-5 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">1</span>
+                                class="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">1</span>
                             Step One
                         </div>
-                        <h3 class="text-lg font-bold text-foreground mb-2">Upload Your CV</h3>
-                        <p class="text-muted-foreground leading-relaxed text-sm">Simply drag and drop your existing PDF
+                        <h3 class="text-xl font-bold text-foreground mb-3">Upload Your CV</h3>
+                        <p class="text-muted-foreground leading-relaxed text-base">Simply drag and drop your existing
+                            PDF
                             resume.
                             Our
                             AI-powered engine handles all the parsing and extraction automatically.</p>
@@ -341,19 +369,19 @@
 
                     <!-- Step 2 -->
                     <div
-                        class="group bg-card rounded-2xl p-6 border border-border hover:border-purple-200 dark:hover:border-purple-700/50 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-8 border border-border hover:border-purple-200 dark:hover:border-purple-700/50 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300">
                         <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 dark:from-purple-900/40 dark:to-purple-800/20 flex items-center justify-center mb-5 text-purple-500 text-xl group-hover:scale-110 transition-transform">
+                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-50 dark:from-purple-900/40 dark:to-purple-800/20 flex items-center justify-center mb-6 text-purple-500 text-2xl group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-wand-magic-sparkles glow-purple"></i>
                         </div>
                         <div
-                            class="inline-flex items-center gap-2 text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-2">
+                            class="inline-flex items-center gap-2 text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-3">
                             <span
-                                class="w-5 h-5 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center">2</span>
+                                class="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center">2</span>
                             Step Two
                         </div>
-                        <h3 class="text-lg font-bold text-foreground mb-2">Customize & Preview</h3>
-                        <p class="text-muted-foreground leading-relaxed text-sm">Choose from beautiful templates,
+                        <h3 class="text-xl font-bold text-foreground mb-3">Customize & Preview</h3>
+                        <p class="text-muted-foreground leading-relaxed text-base">Choose from beautiful templates,
                             customize
                             colors and
                             fonts, and see real-time preview of your portfolio as you edit.</p>
@@ -361,19 +389,19 @@
 
                     <!-- Step 3 -->
                     <div
-                        class="group bg-card rounded-2xl p-6 border border-border hover:border-emerald-200 dark:hover:border-emerald-700/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-8 border border-border hover:border-emerald-200 dark:hover:border-emerald-700/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300">
                         <div
-                            class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 flex items-center justify-center mb-5 text-emerald-500 text-xl group-hover:scale-110 transition-transform">
+                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 flex items-center justify-center mb-6 text-emerald-500 text-2xl group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-rocket glow-emerald"></i>
                         </div>
                         <div
-                            class="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">
+                            class="inline-flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-3">
                             <span
-                                class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">3</span>
+                                class="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">3</span>
                             Step Three
                         </div>
-                        <h3 class="text-lg font-bold text-foreground mb-2">Publish & Share</h3>
-                        <p class="text-muted-foreground leading-relaxed text-sm">Get a custom hosted link, export to
+                        <h3 class="text-xl font-bold text-foreground mb-3">Publish & Share</h3>
+                        <p class="text-muted-foreground leading-relaxed text-base">Get a custom hosted link, export to
                             GitHub
                             Pages, or
                             download the complete HTML/CSS package for self-hosting.</p>
@@ -403,51 +431,51 @@
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Card 1 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-rose-200 dark:hover:border-rose-700/50 hover:shadow-xl hover:shadow-rose-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-rose-200 dark:hover:border-rose-700/50 hover:shadow-xl hover:shadow-rose-500/10 transition-all duration-300">
                         <div
-                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/40 dark:to-rose-800/20 flex items-center justify-center mb-4 text-rose-500 text-lg group-hover:scale-110 transition-transform">
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/40 dark:to-rose-800/20 flex items-center justify-center mb-5 text-rose-500 text-xl group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-user-tie glow-rose"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">First Impressions</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">Make a lasting impression on recruiters
+                        <h3 class="text-lg font-bold text-foreground mb-2">First Impressions</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">Make a lasting impression on recruiters
                             before
                             they even meet you. Your portfolio speaks volumes about your professionalism.</p>
                     </div>
 
                     <!-- Card 2 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-amber-200 dark:hover:border-amber-700/50 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-amber-200 dark:hover:border-amber-700/50 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300">
                         <div
-                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/40 dark:to-amber-800/20 flex items-center justify-center mb-4 text-amber-500 text-lg group-hover:scale-110 transition-transform">
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/40 dark:to-amber-800/20 flex items-center justify-center mb-5 text-amber-500 text-xl group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-eye glow-amber"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">Showcase Your Work</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">Display your projects, achievements,
+                        <h3 class="text-lg font-bold text-foreground mb-2">Showcase Your Work</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">Display your projects, achievements,
                             and
                             skills in an interactive way that a traditional resume simply cannot match.</p>
                     </div>
 
                     <!-- Card 3 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-sky-200 dark:hover:border-sky-700/50 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-sky-200 dark:hover:border-sky-700/50 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300">
                         <div
-                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 dark:from-sky-900/40 dark:to-sky-800/20 flex items-center justify-center mb-4 text-sky-500 text-lg group-hover:scale-110 transition-transform">
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 dark:from-sky-900/40 dark:to-sky-800/20 flex items-center justify-center mb-5 text-sky-500 text-xl group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-magnifying-glass glow-sky"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">Be Discoverable</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">Improve your online presence and let
+                        <h3 class="text-lg font-bold text-foreground mb-2">Be Discoverable</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">Improve your online presence and let
                             opportunities find you. Your portfolio is searchable and shareable across the web.</p>
                     </div>
 
                     <!-- Card 4 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-violet-200 dark:hover:border-violet-700/50 hover:shadow-xl hover:shadow-violet-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-violet-200 dark:hover:border-violet-700/50 hover:shadow-xl hover:shadow-violet-500/10 transition-all duration-300">
                         <div
-                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-100 to-violet-50 dark:from-violet-900/40 dark:to-violet-800/20 flex items-center justify-center mb-4 text-violet-500 text-lg group-hover:scale-110 transition-transform">
+                            class="w-14 h-14 rounded-xl bg-gradient-to-br from-violet-100 to-violet-50 dark:from-violet-900/40 dark:to-violet-800/20 flex items-center justify-center mb-5 text-violet-500 text-xl group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-trophy glow-violet"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">Beat Competition</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">Stand out from hundreds of applicants.
+                        <h3 class="text-lg font-bold text-foreground mb-2">Beat Competition</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">Stand out from hundreds of applicants.
                             A
                             professional portfolio is your competitive edge in today's job market.</p>
                     </div>
@@ -474,78 +502,78 @@
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Feature 1 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-rose-200 dark:hover:border-rose-700/50 hover:shadow-xl hover:shadow-rose-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-rose-200 dark:hover:border-rose-700/50 hover:shadow-xl hover:shadow-rose-500/10 transition-all duration-300">
                         <div
-                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/40 dark:to-rose-800/20 flex items-center justify-center mb-4 text-rose-500 text-base group-hover:scale-110 transition-transform">
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/40 dark:to-rose-800/20 flex items-center justify-center mb-5 text-rose-500 text-lg group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-palette glow-rose"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">Beautiful Templates</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">Multiple professionally designed
+                        <h3 class="text-lg font-bold text-foreground mb-2">Beautiful Templates</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">Multiple professionally designed
                             templates to
                             match your personal brand and industry.</p>
                     </div>
 
                     <!-- Feature 2 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-sky-200 dark:hover:border-sky-700/50 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-sky-200 dark:hover:border-sky-700/50 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300">
                         <div
-                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 dark:from-sky-900/40 dark:to-sky-800/20 flex items-center justify-center mb-4 text-sky-500 text-base group-hover:scale-110 transition-transform">
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-sky-100 to-sky-50 dark:from-sky-900/40 dark:to-sky-800/20 flex items-center justify-center mb-5 text-sky-500 text-lg group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-mobile-screen glow-sky"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">Mobile Responsive</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">Your portfolio looks stunning on any
+                        <h3 class="text-lg font-bold text-foreground mb-2">Mobile Responsive</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">Your portfolio looks stunning on any
                             device -
                             desktop, tablet, or smartphone.</p>
                     </div>
 
                     <!-- Feature 3 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-emerald-200 dark:hover:border-emerald-700/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-emerald-200 dark:hover:border-emerald-700/50 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300">
                         <div
-                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 flex items-center justify-center mb-4 text-emerald-500 text-base group-hover:scale-110 transition-transform">
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-800/20 flex items-center justify-center mb-5 text-emerald-500 text-lg group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-chart-line glow-emerald"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">SEO Optimized</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">Built-in SEO best practices help
+                        <h3 class="text-lg font-bold text-foreground mb-2">SEO Optimized</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">Built-in SEO best practices help
                             recruiters
                             and clients find you through search engines.</p>
                     </div>
 
                     <!-- Feature 4 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-brand-200 dark:hover:border-brand-700/50 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-brand-200 dark:hover:border-brand-700/50 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-300">
                         <div
-                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-100 to-brand-50 dark:from-brand-900/40 dark:to-brand-800/20 flex items-center justify-center mb-4 text-brand-500 text-base group-hover:scale-110 transition-transform">
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-100 to-brand-50 dark:from-brand-900/40 dark:to-brand-800/20 flex items-center justify-center mb-5 text-brand-500 text-lg group-hover:scale-110 transition-transform">
                             <i class="fa-brands fa-github glow-brand"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">GitHub Export</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">One-click export to GitHub Pages for
+                        <h3 class="text-lg font-bold text-foreground mb-2">GitHub Export</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">One-click export to GitHub Pages for
                             free
                             hosting with your own custom subdomain.</p>
                     </div>
 
                     <!-- Feature 5 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-blue-200 dark:hover:border-blue-700/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-blue-200 dark:hover:border-blue-700/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300">
                         <div
-                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/40 dark:to-blue-800/20 flex items-center justify-center mb-4 text-blue-500 text-base group-hover:scale-110 transition-transform">
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/40 dark:to-blue-800/20 flex items-center justify-center mb-5 text-blue-500 text-lg group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-download glow-blue"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">Download & Own</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">Download your complete portfolio as
+                        <h3 class="text-lg font-bold text-foreground mb-2">Download & Own</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">Download your complete portfolio as
                             HTML/CSS
                             files. You own your code, forever.</p>
                     </div>
 
                     <!-- Feature 6 -->
                     <div
-                        class="group bg-card rounded-2xl p-5 border border-border hover:border-amber-200 dark:hover:border-amber-700/50 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300">
+                        class="group bg-card rounded-2xl p-6 border border-border hover:border-amber-200 dark:hover:border-amber-700/50 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300">
                         <div
-                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/40 dark:to-amber-800/20 flex items-center justify-center mb-4 text-amber-500 text-base group-hover:scale-110 transition-transform">
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/40 dark:to-amber-800/20 flex items-center justify-center mb-5 text-amber-500 text-lg group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-bolt glow-amber"></i>
                         </div>
-                        <h3 class="text-base font-bold text-foreground mb-1">Lightning Fast</h3>
-                        <p class="text-muted-foreground text-xs leading-relaxed">Optimized for speed and performance.
+                        <h3 class="text-lg font-bold text-foreground mb-2">Lightning Fast</h3>
+                        <p class="text-muted-foreground text-sm leading-relaxed">Optimized for speed and performance.
                             Your
                             portfolio loads instantly for the best user experience.</p>
                     </div>
@@ -554,7 +582,7 @@
         </section>
 
         <!-- Footer -->
-        <footer class="bg-muted/50 dark:bg-slate-900 text-foreground dark:text-white border-t border-border py-16">
+        <footer class="bg-background dark:bg-background text-foreground border-t border-border py-16">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-8">
                     <!-- Logo & Brand -->
@@ -1142,6 +1170,12 @@
     <script src="js/dateUtils.js"></script>
     <!-- Resume Parser Module -->
     <script src="js/parser.js"></script>
+    <!-- Template Renderer Module -->
+    <script src="js/templateRenderer.js"></script>
+    <!-- UI Helpers Module -->
+    <script src="js/uiHelpers.js"></script>
+    <!-- Download Manager Module -->
+    <script src="js/downloadManager.js"></script>
     <!-- Application JavaScript -->
     <script src="js/app.js"></script>
     <!-- PUBLISH MODAL -->

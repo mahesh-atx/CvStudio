@@ -12,7 +12,6 @@ function checkPdfJsAvailability() {
     }
 
     if (!pdfjsLib.GlobalWorkerOptions.workerSrc) {
-        console.warn('PDF.js worker not configured. Attempting to set default worker...');
         try {
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
         } catch (e) {
@@ -368,14 +367,4 @@ function formatParsedDataForState(parsedData) {
 
         _fullData: parsedData
     };
-}
-
-// Legacy functions (kept for compatibility but do nothing)
-function getApiKey() {
-    console.warn('getApiKey() is deprecated. API keys are now handled server-side.');
-    return null;
-}
-
-function clearApiKey() {
-    console.warn('clearApiKey() is deprecated. API keys are now handled server-side.');
 }

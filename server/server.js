@@ -160,7 +160,7 @@ app.post('/api/parse-resume', async (req, res) => {
         ];
 
         // Get model from env (with fallback)
-        const primaryModel = process.env.MODEL_NAME || 'llama-3.3-70b-versatile';
+        const primaryModel = process.env.MODEL_NAME || 'openai/gpt-oss-120b';
         const fallbackModel = process.env.FALLBACK_MODEL || 'llama-3.1-8b-instant';
         const temperature = 0.1;
         const max_tokens = 8000;
@@ -253,7 +253,7 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`\n✅ FolioFlow Server running on http://localhost:${PORT}`);
     console.log(`📝 API Key configured: ${process.env.GROQ_API_KEY ? 'Yes' : '❌ No - Set GROQ_API_KEY in .env'}`);
-    console.log(`🤖 Primary Model: ${process.env.MODEL_NAME || 'llama-3.3-70b-versatile'}`);
+    console.log(`🤖 Primary Model: ${process.env.MODEL_NAME || 'openai/gpt-oss-120b'}`);
     console.log(`🔄 Fallback Model: ${process.env.FALLBACK_MODEL || 'llama-3.1-8b-instant'}`);
     console.log(`\n🔒 Security: All API keys are handled server-side only.\n`);
 });
