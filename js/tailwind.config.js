@@ -50,11 +50,15 @@ tailwind.config = {
                     foreground: "hsl(var(--card-foreground))",
                 },
                 brand: {
-                    50: '#f5f3ff',
-                    100: '#ede9fe',
-                    500: '#8b5cf6', // Violet
-                    600: '#7c3aed',
-                    900: '#4c1d95',
+                    50: '#fafafa',
+                    100: '#f4f4f5',
+                    200: '#e4e4e7',
+                    300: '#d4d4d8',
+                    400: '#a1a1aa',
+                    500: '#71717a', // Neutral gray
+                    600: '#27272a', // Dark gray (main)
+                    700: '#18181b',
+                    900: '#09090b',
                 }
             },
             fontFamily: {

@@ -714,7 +714,11 @@ if (dropZone) {
 
 if (fileInput) {
     fileInput.addEventListener('change', (e) => {
-        if (e.target.files.length) handleFile(e.target.files[0]);
+        console.log('File input changed', e.target.files);
+        if (e.target.files.length) {
+            console.log('File selected:', e.target.files[0].name);
+            handleFile(e.target.files[0]);
+        }
     });
 }
 
@@ -2197,25 +2201,26 @@ document.addEventListener('click', (e) => {
 });
 
 // ==========================================
-// 12. PUBLISH MODAL CONTROL
+// 12. PUBLISH MODAL LOGIC
 // ==========================================
-function showPublishModal() {
+function openPublishModal() {
     const modal = document.getElementById('publish-modal');
-    if (modal) {
-        modal.classList.remove('hidden');
+    modal.classList.remove('hidden');
+    // Ensure mobile menu is closed when opening modal
+    const mobileMenu = document.getElementById('editor-mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.add('hidden');
     }
 }
 
-function hidePublishModal() {
+function closePublishModal() {
     const modal = document.getElementById('publish-modal');
-    if (modal) {
-        modal.classList.add('hidden');
-    }
+    modal.classList.add('hidden');
 }
 
 // Close modal on Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        hidePublishModal();
+        closePublishModal();
     }
 });
