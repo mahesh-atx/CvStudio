@@ -2177,3 +2177,45 @@ mobileSidebarToggle?.addEventListener('click', () => {
 });
 
 mobileSidebarOverlay?.addEventListener('click', closeMobileSidebar);
+
+// ==========================================
+// 11. EDITOR MOBILE MENU TOGGLE
+// ==========================================
+document.addEventListener('click', (e) => {
+    const menu = document.getElementById('editor-mobile-menu');
+    const btn = e.target.closest('button');
+
+    // If menu is open and click is outside menu and outside the toggle button
+    if (menu && !menu.classList.contains('hidden')) {
+        // Check if click was on the toggle button itself (which has the ellipsis icon)
+        const isToggleButton = btn && btn.querySelector('.fa-ellipsis-vertical');
+
+        if (!menu.contains(e.target) && !isToggleButton) {
+            menu.classList.add('hidden');
+        }
+    }
+});
+
+// ==========================================
+// 12. PUBLISH MODAL CONTROL
+// ==========================================
+function showPublishModal() {
+    const modal = document.getElementById('publish-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+}
+
+function hidePublishModal() {
+    const modal = document.getElementById('publish-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        hidePublishModal();
+    }
+});

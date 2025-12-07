@@ -694,7 +694,8 @@
     <div id="editor-app" class="fixed inset-0 bg-secondary hidden flex flex-col z-50">
 
         <!-- Editor Header -->
-        <header class="bg-card h-16 border-b border-border flex items-center justify-between px-6 shrink-0 z-20">
+        <header
+            class="bg-card h-16 border-b border-border flex items-center justify-between px-6 shrink-0 z-20 relative">
             <div class="flex items-center gap-4">
                 <div
                     class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs">
@@ -713,7 +714,8 @@
                     <button id="mobile-view-btn"
                         class="px-3 py-1.5 rounded-md text-xs font-medium text-muted-foreground hover:text-foreground">Mobile</button>
                 </div>
-                <!-- Undo/Redo Buttons -->
+
+                <!-- Undo/Redo Buttons (Always Visible) -->
                 <div class="flex items-center gap-1">
                     <button id="undo-btn" onclick="undo()" disabled
                         class="w-9 h-9 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition disabled:opacity-30 disabled:cursor-not-allowed"
@@ -726,17 +728,58 @@
                         <i class="fa-solid fa-rotate-right text-sm"></i>
                     </button>
                 </div>
-                <div class="h-6 w-px bg-border mx-2"></div>
-                <button class="text-muted-foreground hover:text-brand-600 px-3 py-2 text-sm font-medium"><i
-                        class="fa-brands fa-github mr-2"></i>Link GitHub</button>
-                <button onclick="downloadSite()"
-                    class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition shadow-lg shadow-slate-900/20 flex items-center gap-2">
-                    <i class="fa-solid fa-cloud-arrow-down"></i> Export
+
+                <div class="h-6 w-px bg-border mx-2 hidden md:block"></div>
+
+                <div class="hidden md:flex items-center gap-3">
+                    <button onclick="showPublishModal()"
+                        class="text-muted-foreground hover:text-brand-600 px-3 py-2 text-sm font-medium"><i
+                            class="fa-brands fa-github mr-2"></i>Link GitHub</button>
+                    <button onclick="downloadSite()"
+                        class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition shadow-lg shadow-slate-900/20 flex items-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-down"></i> Export
+                    </button>
+                    <button onclick="showPublishModal()"
+                        class="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-700 transition shadow-lg shadow-brand-500/30 flex items-center gap-2">
+                        <i class="fa-solid fa-globe"></i> Publish
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="document.getElementById('editor-mobile-menu').classList.toggle('hidden')"
+                    class="md:hidden w-9 h-9 rounded-lg flex items-center justify-center text-foreground hover:bg-muted transition">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
-                <button onclick="alert('Published to https://alex-dev.cvstudio.co')"
-                    class="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-700 transition shadow-lg shadow-brand-500/30 flex items-center gap-2">
-                    <i class="fa-solid fa-globe"></i> Publish
-                </button>
+
+                <!-- Mobile Dropdown Menu -->
+                <div id="editor-mobile-menu"
+                    class="hidden absolute top-16 right-4 w-48 bg-card border border-border rounded-xl shadow-xl p-2 flex flex-col gap-1 z-50">
+                    <button onclick="showPublishModal()"
+                        class="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted rounded-lg flex items-center gap-2">
+                        <i class="fa-brands fa-github w-5 text-center"></i> Link GitHub
+                    </button>
+                    <button onclick="downloadSite()"
+                        class="w-full text-left px-3 py-2 text-sm text-foreground hover:bg-muted rounded-lg flex items-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-down w-5 text-center"></i> Export
+                    </button>
+                    <button onclick="showPublishModal()"
+                        class="w-full text-left px-3 py-2 text-sm text-brand-600 hover:bg-brand-50 rounded-lg flex items-center gap-2">
+                        <i class="fa-solid fa-globe w-5 text-center"></i> Publish
+                    </button>
+                    <div class="h-px bg-border my-1"></div>
+                    <div class="px-3 py-1 flex items-center justify-between text-xs text-muted-foreground">
+                        <span>View:</span>
+                        <div class="flex items-center gap-1 bg-muted/50 rounded p-0.5">
+                            <button onclick="document.getElementById('desktop-view-btn').click()"
+                                class="px-2 py-1 hover:bg-white dark:hover:bg-slate-700 rounded transition"><i
+                                    class="fa-solid fa-desktop"></i></button>
+                            <button onclick="document.getElementById('mobile-view-btn').click()"
+                                class="px-2 py-1 hover:bg-white dark:hover:bg-slate-700 rounded transition"><i
+                                    class="fa-solid fa-mobile-screen"></i></button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </header>
 
@@ -1100,6 +1143,78 @@
             </section>
 
         </main>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PUBLISH GUIDE MODAL                        -->
+    <!-- ========================================== -->
+    <div id="publish-modal" class="fixed inset-0 z-[100] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="hidePublishModal()">
+        </div>
+
+        <!-- Modal Content -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-2xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-white/20 p-6 md:p-8 animate-in fade-in zoom-in duration-200">
+            <button onclick="hidePublishModal()"
+                class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center mb-8">
+                <div
+                    class="w-12 h-12 bg-brand-100 dark:bg-brand-900/30 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-600 dark:text-brand-400">
+                    <i class="fa-solid fa-rocket text-xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-foreground mb-2">Publish Your Portfolio</h2>
+                <p class="text-muted-foreground">Choose how you want to share your work with the world</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4 md:gap-6">
+                <!-- Option 1: Netlify -->
+                <div class="group relative bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border-2 border-transparent hover:border-brand-500 transition-all cursor-pointer hover:bg-brand-50/50 dark:hover:bg-brand-900/10"
+                    onclick="window.open('https://app.netlify.com/drop', '_blank')">
+                    <div class="absolute top-3 right-3">
+                        <span
+                            class="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide">Easiest</span>
+                    </div>
+                    <div
+                        class="w-10 h-10 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex items-center justify-center text-teal-600 dark:text-teal-400 mb-4 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-foreground mb-2">Netlify Drop</h3>
+                    <p class="text-sm text-muted-foreground mb-4">Drag and drop your exported folder to publish in
+                        seconds. No coding required.</p>
+                    <div class="flex items-center text-brand-600 text-sm font-medium group-hover:underline">
+                        Go to Netlify Drop <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Option 2: GitHub -->
+                <div class="group relative bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border-2 border-transparent hover:border-slate-500 transition-all cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800"
+                    onclick="window.open('https://pages.github.com/', '_blank')">
+                    <div
+                        class="w-10 h-10 bg-slate-200 dark:bg-slate-700 rounded-lg flex items-center justify-center text-slate-700 dark:text-slate-200 mb-4 text-xl">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-foreground mb-2">GitHub Pages</h3>
+                    <p class="text-sm text-muted-foreground mb-4">Manual upload for developers. Host it for free on your
+                        custom github.io domain.</p>
+                    <div
+                        class="flex items-center text-slate-600 dark:text-slate-400 text-sm font-medium group-hover:underline">
+                        View Guide <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+                <p><i class="fa-solid fa-circle-info mr-2 text-brand-500"></i>First, <strong>Export</strong> your site
+                    using the Export button.</p>
+                <button onclick="downloadSite()"
+                    class="text-brand-600 hover:text-brand-700 font-medium hover:underline">Download now</button>
+            </div>
+        </div>
     </div>
 
     <!-- Configuration -->
