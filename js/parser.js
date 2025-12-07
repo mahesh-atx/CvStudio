@@ -1,5 +1,5 @@
 // ==========================================
-// FolioFlow - Resume Parser Module
+// CvStudio - Resume Parser Module
 // PDF Text Extraction + Server API Integration
 // ==========================================
 

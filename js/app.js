@@ -1,5 +1,5 @@
 // ==========================================
-// FolioFlow - Main Application JavaScript
+// CvStudio - Main Application JavaScript
 // ==========================================
 
 // ==========================================
@@ -917,7 +917,7 @@ if (createBtn) {
 
             // Update preview URL with user's name
             const userName = state.data.fullName ? state.data.fullName.toLowerCase().replace(/\s+/g, '-') : 'yourname';
-            document.getElementById('preview-url').textContent = `${userName}.folioflow.co`;
+            document.getElementById('preview-url').textContent = `${userName}.cvstudio.co`;
 
             // Render Preview in the preview mode container
             updatePreviewMode();
@@ -982,39 +982,10 @@ document.getElementById('preview-download-btn')?.addEventListener('click', () =>
 // Publish button in preview mode
 document.getElementById('preview-publish-btn')?.addEventListener('click', () => {
     const userName = state.data.fullName ? state.data.fullName.toLowerCase().replace(/\s+/g, '-') : 'yourname';
-    showToast(`Published to https://${userName}.folioflow.co`);
+    showToast(`Published to https://${userName}.cvstudio.co`);
 });
 
-// Helper function to render preview in preview mode container
-function updatePreviewMode() {
-    const container = document.getElementById('preview-mode-container');
-    const data = {
-        fullName: state.data.fullName || '',
-        title: state.data.title || '',
-        location: state.data.location || '',
-        bio: state.data.bio || '',
-        skills: state.data.skills ? (Array.isArray(state.data.skills) ? state.data.skills : state.data.skills.split(',').map(s => s.trim())) : [],
-        expRole: state.data.expRole || '',
-        expCompany: state.data.expCompany || '',
-        expDesc: state.data.expDesc || '',
-        experiences: state.data.experiences || [],
-        education: state.data.education || [],
-        projects: state.data.projects || [],
-        certifications: state.data.certifications || [],
-        customSections: state.data.customSections || [],
-        email: state.data.email || '',
-        phone: state.data.phone || '',
-        linkedin: state.data.linkedin || '',
-        github: state.data.github || '',
-        website: state.data.website || '',
-        twitter: state.data.twitter || ''
-    };
 
-    // Generate the same modern template HTML
-    const initials = data.fullName ? data.fullName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'ME';
-
-    container.innerHTML = generateModernTemplate(data, initials);
-}
 
 // Helper function for download from preview mode
 function downloadSiteFromPreview() {
@@ -1137,42 +1108,47 @@ function generateModernTemplate(data, initials) {
             `).join('') : '';
 
     return `
-        <div class="min-h-full bg-white text-gray-900 font-sans overflow-x-hidden">
+
+        <div class="min-h-full bg-gray-50 text-gray-900 font-sans">
             <!-- Navigation -->
-            <div class="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-sm">
-                <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-                    <!-- Logo/Initials -->
-                    <div class="flex items-center gap-3">
-                        ${data.profilePhoto ?
-            `<img src="${data.profilePhoto}" alt="${data.fullName || 'Profile'}" class="w-9 h-9 rounded-full object-cover flex-shrink-0">` :
-            `<div class="w-9 h-9 rounded-full bg-gray-800 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">${initials}</div>`
+            <div class="sticky top-0 md:top-4 z-50 transition-all duration-300">
+                <div class="max-w-3xl mx-auto md:px-0">
+                    <div class="bg-white/90 backdrop-blur-xl border-b border-gray-100 md:border md:border-white/40 md:shadow-xl md:ring-1 md:ring-white/50 md:rounded-full relative">
+                        <div class="px-4 py-2 md:px-5 md:py-2 flex items-center justify-between">
+                            <!-- Logo/Initials -->
+                            <div class="flex items-center gap-3">
+                                ${data.profilePhoto ?
+            `<img src="${data.profilePhoto}" alt="${data.fullName || 'Profile'}" class="w-8 h-8 rounded-full object-cover flex-shrink-0 ring-2 ring-white shadow-sm">` :
+            `<div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 shadow-sm">${initials}</div>`
         }
-                        <span class="font-semibold text-gray-900 text-sm">${data.fullName || 'Portfolio'}</span>
-                    </div>
-                    
-                    <!-- Desktop Navigation Links -->
-                    <div class="hidden md:flex items-center gap-6 text-sm text-gray-600">
-                        <a href="#home" class="hover:text-gray-900 transition font-medium">Home</a>
-                        <a href="#projects" class="hover:text-gray-900 transition font-medium">Projects</a>
-                        <a href="#experience" class="hover:text-gray-900 transition font-medium">Experience</a>
-                        <a href="#education" class="hover:text-gray-900 transition font-medium">Education</a>
-                        <a href="#contact" class="hover:text-gray-900 transition font-medium">Contact</a>
-                    </div>
-                    
-                    <!-- Hamburger Button (Mobile Only) -->
-                    <button onclick="const menu = document.getElementById('${menuId}'); menu.classList.toggle('hidden'); this.querySelector('i').classList.toggle('fa-bars'); this.querySelector('i').classList.toggle('fa-xmark');" class="md:hidden w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition">
-                        <i class="fa-solid fa-bars text-sm"></i>
-                    </button>
-                </div>
-                
-                <!-- Mobile Menu (Hidden by default) -->
-                <div id="${menuId}" class="hidden bg-white border-t border-gray-100 px-4 py-4">
-                    <div class="flex flex-col gap-1 text-sm text-gray-600">
-                        <a href="#home" class="py-2.5 px-4 rounded-lg hover:bg-gray-100 transition font-medium">Home</a>
-                        <a href="#projects" class="py-2.5 px-4 rounded-lg hover:bg-gray-100 transition font-medium">Projects</a>
-                        <a href="#experience" class="py-2.5 px-4 rounded-lg hover:bg-gray-100 transition font-medium">Experience</a>
-                        <a href="#education" class="py-2.5 px-4 rounded-lg hover:bg-gray-100 transition font-medium">Education</a>
-                        <a href="#contact" class="py-2.5 px-4 rounded-lg hover:bg-gray-100 transition font-medium">Contact</a>
+                                <span class="font-bold text-gray-900 text-sm tracking-tight">${data.fullName || 'Portfolio'}</span>
+                            </div>
+                            
+                            <!-- Desktop Navigation Links -->
+                            <div class="hidden md:flex items-center gap-1 bg-gray-100/50 p-1 rounded-full border border-gray-100/50">
+                                <a href="#home" class="px-3 py-1 rounded-full text-xs font-medium text-gray-600 hover:text-gray-900 hover:bg-white hover:shadow-sm transition-all duration-200">Home</a>
+                                <a href="#projects" class="px-3 py-1 rounded-full text-xs font-medium text-gray-600 hover:text-gray-900 hover:bg-white hover:shadow-sm transition-all duration-200">Projects</a>
+                                <a href="#experience" class="px-3 py-1 rounded-full text-xs font-medium text-gray-600 hover:text-gray-900 hover:bg-white hover:shadow-sm transition-all duration-200">Experience</a>
+                                <a href="#education" class="px-3 py-1 rounded-full text-xs font-medium text-gray-600 hover:text-gray-900 hover:bg-white hover:shadow-sm transition-all duration-200">Education</a>
+                                <a href="#contact" class="px-3 py-1 rounded-full text-xs font-medium text-gray-600 hover:text-gray-900 hover:bg-white hover:shadow-sm transition-all duration-200">Contact</a>
+                            </div>
+                            
+                            <!-- Hamburger Button (Mobile Only) -->
+                            <button onclick="const menu = document.getElementById('${menuId}'); menu.classList.toggle('hidden'); this.querySelector('i').classList.toggle('fa-bars'); this.querySelector('i').classList.toggle('fa-xmark');" class="md:hidden w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 hover:bg-gray-100 transition active:scale-95">
+                                <i class="fa-solid fa-bars text-sm"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Mobile Menu (Hidden by default) -->
+                        <div id="${menuId}" class="hidden md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-xl px-4 py-4 rounded-b-2xl">
+                            <div class="flex flex-col gap-1 text-sm text-gray-600">
+                                <a href="#home" class="py-2 px-4 rounded-xl hover:bg-gray-50 transition font-medium flex items-center gap-3"><i class="fa-solid fa-home text-blue-500/70 w-5"></i>Home</a>
+                                <a href="#projects" class="py-2 px-4 rounded-xl hover:bg-gray-50 transition font-medium flex items-center gap-3"><i class="fa-solid fa-briefcase text-purple-500/70 w-5"></i>Projects</a>
+                                <a href="#experience" class="py-2 px-4 rounded-xl hover:bg-gray-50 transition font-medium flex items-center gap-3"><i class="fa-solid fa-layer-group text-emerald-500/70 w-5"></i>Experience</a>
+                                <a href="#education" class="py-2 px-4 rounded-xl hover:bg-gray-50 transition font-medium flex items-center gap-3"><i class="fa-solid fa-graduation-cap text-orange-500/70 w-5"></i>Education</a>
+                                <a href="#contact" class="py-2 px-4 rounded-xl hover:bg-gray-50 transition font-medium flex items-center gap-3"><i class="fa-solid fa-paper-plane text-rose-500/70 w-5"></i>Contact</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1739,7 +1715,94 @@ function updatePreview() {
         `;
     }
 
-    container.innerHTML = html;
+    // Write to Iframe instead of innerHTML
+    writeToIframe('preview-container', html);
+}
+
+// Helper function to render preview in preview mode container
+function updatePreviewMode() {
+    const data = {
+        fullName: state.data.fullName || '',
+        title: state.data.title || '',
+        location: state.data.location || '',
+        bio: state.data.bio || '',
+        skills: state.data.skills ? (Array.isArray(state.data.skills) ? state.data.skills : state.data.skills.split(',').map(s => s.trim())) : [],
+        expRole: state.data.expRole || '',
+        expCompany: state.data.expCompany || '',
+        expDesc: state.data.expDesc || '',
+        experiences: state.data.experiences || [],
+        education: state.data.education || [],
+        projects: state.data.projects || [],
+        certifications: state.data.certifications || [],
+        languages: state.data.languages || [],
+        awards: state.data.awards || [],
+        customSections: state.data.customSections || [],
+        email: state.data.email || '',
+        phone: state.data.phone || '',
+        linkedin: state.data.linkedin || '',
+        github: state.data.github || '',
+        website: state.data.website || '',
+        twitter: state.data.twitter || '',
+        profilePhoto: state.data.profilePhoto || ''
+    };
+
+    // Generate the same modern template HTML
+    const initials = data.fullName ? data.fullName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'ME';
+
+    const html = generateModernTemplate(data, initials);
+    writeToIframe('preview-mode-container', html);
+}
+
+// Helper function to write content to iframe
+function writeToIframe(iframeId, bodyHtml) {
+    const iframe = document.getElementById(iframeId);
+    if (!iframe) return;
+
+    // Check if iframe is accessible (same origin)
+    try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+
+        const fullHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 900: '#1e3a8a' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { display: none; }
+        html { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+    ${bodyHtml}
+</body>
+</html>`;
+
+        doc.open();
+        doc.write(fullHtml);
+        doc.close();
+    } catch (e) {
+        console.error('Error writing to iframe:', e);
+    }
 }
 
 // ==========================================

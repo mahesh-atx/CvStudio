@@ -7,6 +7,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const https = require('https');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -256,3 +257,36 @@ app.listen(PORT, () => {
     console.log(`🔄 Fallback Model: ${process.env.FALLBACK_MODEL || 'llama-3.1-8b-instant'}`);
     console.log(`\n🔒 Security: All API keys are handled server-side only.\n`);
 });
+
+const RENDER_URL = process.env.RENDER_EXTERNAL_URL;
+const PING_INTERVAL_MS = 14 * 60 * 1000;
+
+if (RENDER_URL) {
+    setInterval(() => {
+        try {
+            https
+                .get(RENDER_URL, (res) => {
+                    if (res.statusCode === 200) {
+                        console.log(
+                            `[Self-Ping] Successful. Status: ${res.statusCode}. Server remains awake.`
+                        );
+                    } else {
+                        console.log(
+                            `[Self-Ping] Received status: ${res.statusCode}. Server remains awake.`
+                        );
+                    }
+                })
+                .on("error", (err) => {
+                    console.error("[Self-Ping] Error:", err.message);
+                });
+        } catch (error) {
+            console.error("[Self-Ping] Error initiating ping:", error);
+        }
+    }, PING_INTERVAL_MS);
+    console.log(
+        `✅ Self-Ping job scheduled to run every 14 minutes on ${RENDER_URL}`
+    );
+} else {
+    console.log("⚠️ Self-Ping skipped: RENDER_EXTERNAL_URL not found.");
+}
+

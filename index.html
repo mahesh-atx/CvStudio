@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FolioFlow | CV to Portfolio</title>
+    <title>CvStudio | CV to Portfolio</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -60,36 +60,81 @@
 
         <!-- Navigation -->
         <nav class="fixed w-full z-50 bg-background/70 backdrop-blur-xl border-b border-border/50 shadow-sm">
-            <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <div
-                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-brand-500/30">
-                        F
+                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-brand-500/30">
+                        Cv
                     </div>
-                    <span class="font-bold text-xl tracking-tight text-foreground">FolioFlow</span>
+                    <span class="font-bold text-xl tracking-tight text-foreground">CvStudio</span>
                 </div>
+                <!-- Desktop Navigation Links -->
                 <div class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
                     <a href="#how-it-works" class="hover:text-brand-600 transition-colors">How it Works</a>
-                    <a href="#features" class="hover:text-brand-600 transition-colors">Features</a>
-                    <a href="#" class="hover:text-brand-600 transition-colors">Pricing</a>
-                    <a href="#" class="hover:text-brand-600 transition-colors">GitHub</a>
+                    <a href="#what-you-get" class="hover:text-brand-600 transition-colors">Features</a>
+                    <a href="#about" class="hover:text-brand-600 transition-colors">About</a>
+                    <a href="https://github.com/your-repo/issues" target="_blank"
+                        class="hover:text-brand-600 transition-colors flex items-center gap-1">
+                        <i class="fa-solid fa-bug text-xs"></i>
+                        Report an Issue
+                    </a>
                 </div>
-                <div class="flex items-center gap-4">
+                <!-- Desktop Right Side -->
+                <div class="hidden md:flex items-center gap-3">
                     <button onclick="toggleTheme()"
                         class="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
                         <i class="fa-solid fa-sun hidden dark:inline"></i>
                         <i class="fa-solid fa-moon inline dark:hidden"></i>
                     </button>
-                    <button class="text-sm font-medium text-muted-foreground hover:text-brand-600">Log In</button>
-                    <button
-                        class="px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl">Get
-                        Started</button>
+                </div>
+                <!-- Mobile: Theme Toggle + Hamburger -->
+                <div class="flex md:hidden items-center gap-2">
+                    <button onclick="toggleTheme()"
+                        class="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+                        <i class="fa-solid fa-sun hidden dark:inline"></i>
+                        <i class="fa-solid fa-moon inline dark:hidden"></i>
+                    </button>
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()"
+                        class="p-2 rounded-lg hover:bg-muted transition-colors text-foreground">
+                        <i class="fa-solid fa-bars text-xl" id="hamburger-icon"></i>
+                        <i class="fa-solid fa-xmark text-xl hidden" id="close-icon"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu"
+                class="hidden md:hidden bg-background/95 backdrop-blur-xl border-b border-border shadow-lg">
+                <div class="px-6 py-4 flex flex-col gap-4">
+                    <a href="#how-it-works" onclick="toggleMobileMenu()"
+                        class="text-base font-medium text-foreground hover:text-brand-600 transition-colors py-2">How it
+                        Works</a>
+                    <a href="#what-you-get" onclick="toggleMobileMenu()"
+                        class="text-base font-medium text-foreground hover:text-brand-600 transition-colors py-2">Features</a>
+                    <a href="#about" onclick="toggleMobileMenu()"
+                        class="text-base font-medium text-foreground hover:text-brand-600 transition-colors py-2">About</a>
+                    <a href="https://github.com/your-repo/issues" target="_blank"
+                        class="text-base font-medium text-foreground hover:text-brand-600 transition-colors py-2 flex items-center gap-2">
+                        <i class="fa-solid fa-bug text-sm"></i>
+                        Report an Issue
+                    </a>
                 </div>
             </div>
         </nav>
 
+        <script>
+            function toggleMobileMenu() {
+                const menu = document.getElementById('mobile-menu');
+                const hamburgerIcon = document.getElementById('hamburger-icon');
+                const closeIcon = document.getElementById('close-icon');
+
+                menu.classList.toggle('hidden');
+                hamburgerIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+            }
+        </script>
+
         <!-- Hero Section - Full Screen -->
-        <header class="min-h-screen flex flex-col justify-center px-6 max-w-7xl mx-auto relative">
+        <header class="min-h-screen flex flex-col justify-center px-6 max-w-7xl mx-auto relative pt-20">
             <!-- Enhanced Decorative Elements (Parallax) -->
             <div id="parallax-blob-1"
                 class="absolute top-32 left-0 w-96 h-96 bg-gradient-to-br from-purple-300 to-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse transition-transform duration-100">
@@ -145,7 +190,7 @@
                     </div>
                 </div>
 
-                <!-- RIGHT: Upload Box (Light Theme) -->
+                <!-- RIGHT: Upload Box -->
                 <div class="w-full lg:w-[480px] flex-shrink-0 animate-fade-in-up" style="animation-delay: 0.3s">
                     <div
                         class="bg-card rounded-3xl p-6 shadow-2xl shadow-slate-200/60 dark:shadow-none border border-border hover:shadow-3xl transition-shadow duration-500">
@@ -508,34 +553,48 @@
         </section>
 
         <!-- Footer -->
-        <footer
-            class="bg-slate-900 text-white dark:bg-background dark:text-foreground dark:border-t dark:border-border py-16">
+        <footer class="bg-muted/50 dark:bg-slate-900 text-foreground dark:text-white border-t border-border py-16">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                    <!-- Logo & Brand -->
                     <div class="flex items-center gap-3">
                         <div
-                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                            F
+                            class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-lg">
+                            Cv
                         </div>
-                        <span class="font-bold text-xl">FolioFlow</span>
+                        <span class="font-bold text-xl">CvStudio</span>
                     </div>
-                    <div class="text-slate-400 text-sm text-center md:text-left">
-                        © 2025 FolioFlow. Made with <i class="fa-solid fa-heart text-rose-500 mx-1 glow-rose"></i> to
-                        help
-                        professionals grow.
+
+                    <!-- Attribution -->
+                    <div
+                        class="text-muted-foreground text-sm text-center md:text-left flex flex-col items-center md:items-start gap-1">
+                        <span>© 2025 CvStudio. All rights reserved.</span>
+                        <span class="flex items-center gap-1">
+                            Made with <i class="fa-solid fa-heart text-rose-500 mx-1 animate-pulse glow-rose"></i> by
+                            <a href="https://mahesh-atx.github.io/Portfolio2.0/" target="_blank"
+                                class="text-brand-600 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-300 font-medium underline underline-offset-2 decoration-brand-500/50 hover:decoration-brand-400 transition-colors">
+                                Mahesh Dongare
+                            </a>
+                        </span>
                     </div>
-                    <div class="flex gap-4">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-slate-800 dark:bg-card flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition-all">
-                            <i class="fa-brands fa-twitter glow-sky"></i>
+
+                    <!-- Social Links -->
+                    <div class="flex gap-3">
+                        <a href="https://twitter.com" target="_blank"
+                            class="w-10 h-10 rounded-full bg-muted dark:bg-slate-800 flex items-center justify-center text-muted-foreground hover:bg-sky-500 hover:text-white hover:scale-110 transition-all duration-300">
+                            <i class="fa-brands fa-twitter"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-slate-800 dark:bg-card flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition-all">
-                            <i class="fa-brands fa-github glow-brand"></i>
+                        <a href="https://github.com/mahesh-atx" target="_blank"
+                            class="w-10 h-10 rounded-full bg-muted dark:bg-slate-800 flex items-center justify-center text-muted-foreground hover:bg-slate-700 hover:text-white hover:scale-110 transition-all duration-300">
+                            <i class="fa-brands fa-github"></i>
                         </a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-slate-800 dark:bg-card flex items-center justify-center text-slate-400 hover:bg-brand-600 hover:text-white transition-all">
-                            <i class="fa-brands fa-linkedin glow-blue"></i>
+                        <a href="https://linkedin.com" target="_blank"
+                            class="w-10 h-10 rounded-full bg-muted dark:bg-slate-800 flex items-center justify-center text-muted-foreground hover:bg-blue-600 hover:text-white hover:scale-110 transition-all duration-300">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://mahesh-atx.github.io/Portfolio2.0/" target="_blank"
+                            class="w-10 h-10 rounded-full bg-muted dark:bg-slate-800 flex items-center justify-center text-muted-foreground hover:bg-brand-600 hover:text-white hover:scale-110 transition-all duration-300">
+                            <i class="fa-solid fa-globe"></i>
                         </a>
                     </div>
                 </div>
@@ -569,8 +628,8 @@
             <!-- Center: Logo/Title -->
             <div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
                 <div
-                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg">
-                    F
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-lg">
+                    Cv
                 </div>
                 <span class="font-bold text-lg text-foreground hidden sm:inline">Portfolio Preview</span>
             </div>
@@ -613,7 +672,7 @@
                         class="flex-1 bg-white dark:bg-slate-800 rounded-lg px-4 py-2 flex items-center justify-center border border-slate-300 dark:border-slate-600 shadow-inner mx-4">
                         <i class="fa-solid fa-lock text-green-600 text-xs mr-2"></i>
                         <span class="text-sm text-slate-500 dark:text-slate-400 font-mono"
-                            id="preview-url">yourname.folioflow.co</span>
+                            id="preview-url">yourname.cvstudio.co</span>
                     </div>
                     <!-- Refresh Button -->
                     <button
@@ -623,10 +682,8 @@
                 </div>
 
                 <!-- Portfolio Content Container -->
-                <div id="preview-mode-container"
-                    class="flex-1 bg-white overflow-y-auto overflow-x-hidden scroll-smooth rounded-b-2xl shadow-2xl shadow-slate-400/30 dark:shadow-slate-900/50">
-                    <!-- Content Injected via JS -->
-                </div>
+                <iframe id="preview-mode-container"
+                    class="w-full h-full border-0 bg-white rounded-b-2xl shadow-2xl"></iframe>
             </div>
         </main>
     </div>
@@ -640,8 +697,8 @@
         <header class="bg-card h-16 border-b border-border flex items-center justify-between px-6 shrink-0 z-20">
             <div class="flex items-center gap-4">
                 <div
-                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold">
-                    F</div>
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs">
+                    Cv</div>
                 <div class="hidden md:block">
                     <h1 class="font-bold text-foreground text-sm">Portfolio Editor</h1>
                     <span class="text-xs text-green-500 flex items-center gap-1"><span
@@ -676,7 +733,7 @@
                     class="bg-primary text-primary-foreground px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition shadow-lg shadow-slate-900/20 flex items-center gap-2">
                     <i class="fa-solid fa-cloud-arrow-down"></i> Export
                 </button>
-                <button onclick="alert('Published to https://alex-dev.folioflow.co')"
+                <button onclick="alert('Published to https://alex-dev.cvstudio.co')"
                     class="bg-brand-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-700 transition shadow-lg shadow-brand-500/30 flex items-center gap-2">
                     <i class="fa-solid fa-globe"></i> Publish
                 </button>
@@ -982,37 +1039,17 @@
                                 <i class="fa-solid fa-gear text-brand-500"></i> Design Settings
                             </h2>
                             <div class="space-y-6">
-                                <!-- Template Selection -->
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-400 mb-3">Template Style</label>
-                                    <div class="grid grid-cols-3 gap-2">
-                                        <button type="button" onclick="setTemplate('modern')"
-                                            class="template-btn p-3 rounded-lg border-2 border-brand-500 bg-brand-500/20 text-brand-300 text-xs font-bold text-center transition">
-                                            Modern
-                                        </button>
-                                        <button type="button" onclick="setTemplate('minimal')"
-                                            class="template-btn p-3 rounded-lg border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white text-xs font-bold text-center transition">
-                                            Minimal
-                                        </button>
-                                        <button type="button" onclick="setTemplate('bold')"
-                                            class="template-btn p-3 rounded-lg border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white text-xs font-bold text-center transition">
-                                            Bold
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Accent Color -->
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-400 mb-3">Accent Color</label>
-                                    <div class="flex gap-3">
-                                        <button type="button" onclick="setAccent('violet')"
-                                            class="w-10 h-10 rounded-full bg-violet-500 ring-2 ring-offset-2 ring-offset-slate-950 ring-violet-500 transition hover:scale-110"></button>
-                                        <button type="button" onclick="setAccent('blue')"
-                                            class="w-10 h-10 rounded-full bg-blue-500 hover:ring-2 ring-offset-2 ring-offset-slate-950 ring-blue-500 transition hover:scale-110"></button>
-                                        <button type="button" onclick="setAccent('emerald')"
-                                            class="w-10 h-10 rounded-full bg-emerald-500 hover:ring-2 ring-offset-2 ring-offset-slate-950 ring-emerald-500 transition hover:scale-110"></button>
-                                        <button type="button" onclick="setAccent('rose')"
-                                            class="w-10 h-10 rounded-full bg-rose-500 hover:ring-2 ring-offset-2 ring-offset-slate-950 ring-rose-500 transition hover:scale-110"></button>
+                                <!-- Template Info -->
+                                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 rounded-lg bg-brand-500/20 flex items-center justify-center">
+                                            <i class="fa-solid fa-palette text-brand-400"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-sm font-semibold text-white">Modern Template</h3>
+                                            <p class="text-xs text-slate-400">Clean, professional design</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1057,10 +1094,8 @@
                     </div>
 
                     <!-- Portfolio Content Container -->
-                    <div id="preview-container"
-                        class="flex-1 bg-white overflow-y-auto overflow-x-hidden scroll-smooth rounded-b-xl shadow-2xl">
-                        <!-- Content Injected via JS -->
-                    </div>
+                    <iframe id="preview-container"
+                        class="w-full h-full border-0 bg-white rounded-b-xl shadow-2xl"></iframe>
                 </div>
             </section>
 
