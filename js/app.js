@@ -993,7 +993,8 @@ document.getElementById('preview-publish-btn')?.addEventListener('click', () => 
 
 // Helper function for download from preview mode
 function downloadSiteFromPreview() {
-    const portfolioContent = document.getElementById('preview-mode-container').innerHTML;
+    const iframe = document.getElementById('preview-mode-container');
+    const portfolioContent = iframe?.contentDocument?.body?.innerHTML || '';
     const fullName = state.data.fullName || 'My Portfolio';
     const title = state.data.title || 'Professional Portfolio';
 
@@ -1945,8 +1946,9 @@ i[class*="fa-"] { font-style: normal; }
 `;
 
 function downloadSite(offline = false) {
-    // Get the portfolio HTML content (without browser chrome)
-    const portfolioContent = document.getElementById('preview-container').innerHTML;
+    // Get the portfolio HTML content from inside the iframe
+    const iframe = document.getElementById('preview-container');
+    const portfolioContent = iframe?.contentDocument?.body?.innerHTML || '';
 
     // Get form data for meta tags
     const form = document.getElementById('portfolio-form');
